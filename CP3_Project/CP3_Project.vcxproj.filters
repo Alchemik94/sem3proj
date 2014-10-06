@@ -50,5 +50,8 @@
     <ClInclude Include="Knight.h">
       <Filter>Header Files\ChampionTypes</Filter>
     </ClInclude>
+    <ClInclude Include="EnemiesFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

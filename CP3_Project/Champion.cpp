@@ -13,6 +13,7 @@ namespace Game
 		_basicDamage = 0;
 		_currentHealth = 0;
 		_currentPower = 0;
+		_distanceFromCastle = 0;
 		_experience = 0;
 		_level = 0;
 		_maximumHealth = 0;
@@ -55,6 +56,9 @@ namespace Game
 				break;
 			case ChampionParameters::CurrentPower:
 				return _currentPower;
+				break;
+			case ChampionParameters::DistanceFromCastle:
+				return _distanceFromCastle;
 				break;
 			case ChampionParameters::Experience:
 				return _experience;

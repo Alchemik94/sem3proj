@@ -18,6 +18,7 @@ namespace Game
 		Level,
 		Experience,
 		Lane,
+		DistanceFromCastle,
 	};
 
 	enum TypeOfChange
@@ -41,14 +42,15 @@ namespace Game
 				_attackSpeed,
 				_level,
 				_experience,
-				_lane;
+				_lane,
+				_distanceFromCastle;
 			int& GetChangingParameter(ChampionParameters param);
 			int Modification(TypeOfChange type, int change);
 		public:
 			Champion();
 			void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
 			int GetParameter(ChampionParameters param);
-			virtual void Attack(std::vector<Champion> enemies);
+			virtual void Attack(std::vector<Champion*> enemies)=NULL;
 	};
 }
 

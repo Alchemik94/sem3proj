@@ -73,6 +73,7 @@
   <ItemGroup>
     <ClInclude Include="Application.h" />
     <ClInclude Include="Champion.h" />
+    <ClInclude Include="EnemiesFilter.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="SingleDataKeeper.h" />
   </ItemGroup>
