@@ -27,9 +27,11 @@ namespace Game
 		switch (type)
 		{
 			case TypeOfChange::Gain:
+			case TypeOfChange::Up:
 				return change;
 				break;
 			case TypeOfChange::Loose:
+			case TypeOfChange::Down:
 				return -change;
 				break;
 			default:
@@ -56,6 +58,9 @@ namespace Game
 				break;
 			case ChampionParameters::Experience:
 				return _experience;
+				break;
+			case ChampionParameters::Lane:
+				return _lane;
 				break;
 			case ChampionParameters::Level:
 				return _level;

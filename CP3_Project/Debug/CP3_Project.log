@@ -1,7 +1,2 @@
-﻿  Champion.cpp
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(93): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Application.cpp
-  Generating Code...
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(39): warning C4715: 'Game::Champion::Modification' : not all control paths return a value
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(79): warning C4715: 'Game::Champion::GetChangingParameter' : not all control paths return a value
+﻿  Knight.cpp
   CP3_Project.vcxproj -> C:\Users\Grzegorz\Dropbox\GitHub\sem3proj\CP3_Project\Debug\CP3_Project.exe
