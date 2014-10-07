@@ -23,7 +23,7 @@ namespace Application
 
 	void MainApplication::Test()
 	{
-		
+
 	}
 }
 

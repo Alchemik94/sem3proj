@@ -11,21 +11,22 @@ namespace Game
 		//we have to create balance of parameters
 	}
 
-	void Knight::Attack(std::vector<Champion*> enemies)
+	Application::Filter* Knight::CreateFilter()
 	{
-		EnemiesFilter* filter = (new EnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter())->Append(new ClosestOneEnemiesFilter());
-		
-		std::vector<Champion*> filteredEnemies = filter->Filter(this,enemies);
-
-		if (filteredEnemies.size() == 1)
-		{
-			filteredEnemies[0]->ChangeStatistics(ChampionParameters::CurrentHealth, TypeOfChange::Loose, GetParameter(ChampionParameters::BasicDamage));
-		}
-		else if (filteredEnemies.size() > 1)
-		{
-			//throwing an error
-		}
+		return (new EnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter())->Append(new ClosestOneEnemiesFilter());
 	}
+
+	void Knight::DisplayAttack(std::vector<Champion*> filteredEnemies)
+	{
+		//to implement
+	}
+
+	void Knight::DisplayDeath()
+	{
+		//to implement
+	}
+
+
 }
 
 #endif

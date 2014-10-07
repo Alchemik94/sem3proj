@@ -2,8 +2,7 @@
 #define _CHAMPION_INTERFACE_DEFINITION
 
 #include "Champion.h"
-
-#define ABS(x) ((x)>=0 ? (x) : -(x))
+#include "EnemiesFilter.h"
 
 namespace Game
 {
@@ -25,7 +24,6 @@ namespace Game
 
 	int Champion::Modification(TypeOfChange type, int change)
 	{
-		change = ABS(change);
 		switch (type)
 		{
 			case TypeOfChange::Gain:
@@ -97,9 +95,58 @@ namespace Game
 	{
 		int& parameter = GetChangingParameter(param);
 		parameter += Modification(type, change);
+		DisplayChange(param,type,change);
+	}
+
+	void Champion::DisplayChange(ChampionParameters param, TypeOfChange type, int change)
+	{
+		switch (param)
+		{
+			case ChampionParameters::CurrentHealth:
+				break;
+			case ChampionParameters::CurrentPower:
+				break;
+			case ChampionParameters::DistanceFromCastle:
+				break;
+			case ChampionParameters::Experience:
+				break;
+			case ChampionParameters::Lane:
+				break;
+			case ChampionParameters::Level:
+				break;
+			case ChampionParameters::MaximumHealth:
+				break;
+			case ChampionParameters::MaximumPower:
+				break;
+			case ChampionParameters::AttackSpeed:
+			case ChampionParameters::BasicDamage:
+			case ChampionParameters::MovementSpeed:
+			case ChampionParameters::Range:
+			default:
+				//not necessarily displayed
+				break;
+		}
+	}
+
+	void Champion::DisplayBeingAttacked()
+	{
+		//to implement
+	}
+
+	void Champion::Attack(std::vector<Champion*> enemies)
+	{
+		EnemiesFilter* filter = static_cast<EnemiesFilter*>(CreateFilter());
+
+		std::vector<Champion*> filteredEnemies = filter->Filter(this, enemies);
+
+		DisplayAttack(filteredEnemies);
+
+		for (int i = 0; i < filteredEnemies.size(); ++i)
+		{
+			filteredEnemies[i]->DisplayBeingAttacked();
+			filteredEnemies[i]->ChangeStatistics(CurrentHealth, Loose, GetParameter(BasicDamage));
+		}
 	}
 }
-
-#undef ABS(x)
 
 #endif

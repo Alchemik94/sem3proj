@@ -2,6 +2,7 @@
 #define _CHAMPION_INTERFACE
 
 #include <vector>
+#include "Filter.h"
 
 namespace Game
 {
@@ -46,11 +47,17 @@ namespace Game
 				_distanceFromCastle;
 			int& GetChangingParameter(ChampionParameters param);
 			int Modification(TypeOfChange type, int change);
+			void DisplayChange(ChampionParameters param, TypeOfChange type, int change);
+		protected:
+			virtual Application::Filter* CreateFilter() = NULL;
+			virtual void DisplayAttack(std::vector<Champion*> filteredEnemies) = NULL;
+			virtual void DisplayBeingAttacked();
+			virtual void DisplayDeath() = NULL;
 		public:
 			Champion();
 			virtual void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
 			virtual int GetParameter(ChampionParameters param);
-			virtual void Attack(std::vector<Champion*> enemies)=NULL;
+			virtual void Attack(std::vector<Champion*> enemies);
 	};
 }
 

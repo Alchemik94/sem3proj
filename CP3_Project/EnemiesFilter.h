@@ -2,10 +2,11 @@
 #define _ENEMIES_FILTER_DECLARATION
 
 #include "Champion.h"
+#include "Filter.h"
 
 namespace Game
 {
-	class EnemiesFilter
+	class EnemiesFilter: public Application::Filter
 	{
 		private:
 			EnemiesFilter* next;

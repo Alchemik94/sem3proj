@@ -5,12 +5,15 @@
 
 namespace Game
 {
-	class Knight : public Game::Champion
+	class Knight : public Champion
 	{
+		protected:
+			//Knight attacks first enemy in range on his lane.
+			virtual Application::Filter* CreateFilter();
+			virtual void DisplayAttack(std::vector<Champion*> filteredEnemies);
+			virtual void DisplayDeath();
 		public:
 			Knight();
-			//Knight attacks first enemy in range on his lane.
-			virtual void Attack(std::vector<Champion*> enemies);
 	};
 }
 
