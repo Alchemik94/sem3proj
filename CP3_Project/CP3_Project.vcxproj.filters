@@ -36,6 +36,9 @@
     <ClCompile Include="Knight.cpp">
       <Filter>Source Files\ChampionTypes</Filter>
     </ClCompile>
+    <ClCompile Include="EnemiesFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">

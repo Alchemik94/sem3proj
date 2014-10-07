@@ -10,6 +10,11 @@ namespace Application
 	bool SingleDataKeeper::_initialized;
 	SingleDataKeeper* SingleDataKeeper::_instance;
 
+	SingleDataKeeper::~SingleDataKeeper()
+	{
+		delete _instance;
+	}
+
 	SingleDataKeeper* SingleDataKeeper::Instance()
 	{
 		if (!_initialized)
@@ -20,27 +25,40 @@ namespace Application
 		return _instance;
 	}
 
-	SingleDataKeeper::SingleDataKeeper()
+	bool SingleDataKeeper::ContainsString(string name)
 	{
-
+		return _stringDictionary.count(name)>0;
 	}
 
-	bool SingleDataKeeper::Contains(string name)
+	bool SingleDataKeeper::ContainsInt(string name)
 	{
-		return _dictionary.count(name)>0;
+		return _intDictionary.count(name)>0;
 	}
 
-	void SingleDataKeeper::Keep(string name, string value)
+	void SingleDataKeeper::KeepString(string name, string value)
 	{
-		if (Contains(name))
-			Get(name) = value;
+		if (ContainsString(name))
+			GetString(name) = value;
 		else
-			_dictionary.emplace(name, value);
+			_stringDictionary.emplace(name, value);
 	}
 
-	string& SingleDataKeeper::Get(string name)
+	void SingleDataKeeper::KeepInt(string name, int value)
 	{
-		return _dictionary[name];
+		if (ContainsInt(name))
+			GetInt(name) = value;
+		else
+			_intDictionary.emplace(name, value);
+	}
+
+	string& SingleDataKeeper::GetString(string name)
+	{
+		return _stringDictionary[name];
+	}
+	
+	int& SingleDataKeeper::GetInt(string name)
+	{
+		return _intDictionary[name];
 	}
 }
 

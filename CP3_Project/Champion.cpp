@@ -15,6 +15,7 @@ namespace Game
 		_currentPower = 0;
 		_distanceFromCastle = 0;
 		_experience = 0;
+		_lane = 0;
 		_level = 0;
 		_maximumHealth = 0;
 		_maximumPower = 0;

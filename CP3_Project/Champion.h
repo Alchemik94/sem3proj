@@ -48,8 +48,8 @@ namespace Game
 			int Modification(TypeOfChange type, int change);
 		public:
 			Champion();
-			void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
-			int GetParameter(ChampionParameters param);
+			virtual void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
+			virtual int GetParameter(ChampionParameters param);
 			virtual void Attack(std::vector<Champion*> enemies)=NULL;
 	};
 }

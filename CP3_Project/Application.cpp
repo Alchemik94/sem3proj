@@ -3,6 +3,12 @@
 
 #include "Application.h"
 
+#ifdef _DEBUG
+	#include <vector>
+	#include <iostream>
+	#include <conio.h>
+#endif
+
 namespace Application
 {
 	MainApplication::MainApplication()

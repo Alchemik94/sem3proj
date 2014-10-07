@@ -13,8 +13,7 @@ namespace Game
 
 	void Knight::Attack(std::vector<Champion*> enemies)
 	{
-		//needs implementation
-		EnemiesFilter* filter = (new EnemiesFilter())->Append(dynamic_cast<EnemiesFilter*>(new LaneEnemiesFilter()))->Append(dynamic_cast<EnemiesFilter*>(new DistanceEnemiesFilter()))->Append(dynamic_cast<EnemiesFilter*>(new ClosestOneEnemiesFilter()));
+		EnemiesFilter* filter = (new EnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter())->Append(new ClosestOneEnemiesFilter());
 		
 		std::vector<Champion*> filteredEnemies = filter->Filter(this,enemies);
 

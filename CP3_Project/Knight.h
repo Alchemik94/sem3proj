@@ -5,7 +5,7 @@
 
 namespace Game
 {
-	class Knight : Game::Champion
+	class Knight : public Game::Champion
 	{
 		public:
 			Knight();

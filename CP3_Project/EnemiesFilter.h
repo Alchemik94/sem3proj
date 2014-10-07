@@ -10,70 +10,31 @@ namespace Game
 		private:
 			EnemiesFilter* next;
 		public:
-			EnemiesFilter()
-			{
-				next = NULL;
-			}
-			EnemiesFilter* Append(EnemiesFilter* filter)
-			{
-				if (next == NULL)
-					next = filter;
-				else
-					next->Append(filter);
-				return this;
-			}
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion,std::vector<Champion*> enemies)
-			{
-				if (next != NULL)
-					return next->Filter(attackingChampion, enemies);
-				else
-					return enemies;
-			}
+			EnemiesFilter();
+			//Adds next filter to the chain
+			EnemiesFilter* Append(EnemiesFilter* filter);
+			//Filters enemies with respect to current filter type
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
 	};
 
-#define ABS(x) ((x)>=0 ? (x) : -(x))
-
-	class DistanceEnemiesFilter : EnemiesFilter
+	class DistanceEnemiesFilter : public EnemiesFilter
 	{
+		protected:
+			virtual int Distance(Champion* first, Champion* second);
 		public:
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
-			{
-				std::vector<Champion*> filtered = std::vector<Champion*>();
-				for (int i = 0; i < enemies.size(); ++i)
-				if (ABS(attackingChampion->GetParameter(ChampionParameters::DistanceFromCastle)-enemies[i]->GetParameter(ChampionParameters::DistanceFromCastle))<=attackingChampion->GetParameter(ChampionParameters::Range))
-					filtered.push_back(enemies[i]);
-				return EnemiesFilter::Filter(attackingChampion, filtered);
-			}
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
 	};
 
-	class ClosestOneEnemiesFilter:EnemiesFilter
+	class ClosestOneEnemiesFilter : public DistanceEnemiesFilter
 	{
 		public:
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
-			{
-				Champion* closest = NULL;
-				for (int i = 0; i < enemies.size(); ++i)
-					if (closest==NULL || ABS(attackingChampion->GetParameter(ChampionParameters::DistanceFromCastle) - enemies[i]->GetParameter(ChampionParameters::DistanceFromCastle)) <= ABS(attackingChampion->GetParameter(ChampionParameters::DistanceFromCastle) - closest->GetParameter(ChampionParameters::DistanceFromCastle)))
-						closest = enemies[i];
-				std::vector<Champion*> filtered = std::vector<Champion*>();
-				filtered.push_back(closest);
-				return EnemiesFilter::Filter(attackingChampion, filtered);
-			}
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
 	};
 
-#undef ABS(x)
-
-	class LaneEnemiesFilter : EnemiesFilter
+	class LaneEnemiesFilter : public EnemiesFilter
 	{
 		public:
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
-			{
-				std::vector<Champion*> filtered = std::vector<Champion*>();
-				for (int i = 0; i < enemies.size(); ++i)
-				if (attackingChampion->GetParameter(ChampionParameters::Lane) == enemies[i]->GetParameter(ChampionParameters::Lane))
-					filtered.push_back(enemies[i]);
-				return EnemiesFilter::Filter(attackingChampion, filtered);
-			}
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
 	};
 }
 
