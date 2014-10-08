@@ -3,6 +3,7 @@
 
 #include <unordered_map>
 #include <string>
+#include "Champion.h"
 
 namespace Application
 {
@@ -13,6 +14,9 @@ namespace Application
 			SingleDataKeeper()
 			{
 				KeepInt("distanceBetweenLanes", 20);
+				//To change
+				SavePreset(Game::ReadyPreset::AIKnight, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				SavePreset(Game::ReadyPreset::PlayerKnight, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 			}
 			~SingleDataKeeper();
 			static SingleDataKeeper* _instance;
@@ -20,6 +24,7 @@ namespace Application
 			//dictionary
 			std::unordered_map<std::string,std::string> _stringDictionary;
 			std::unordered_map<std::string, int> _intDictionary;
+			void InitializeComponent();
 		public:
 			//Gives access to single instance in whole program
 			static SingleDataKeeper* Instance();
@@ -35,6 +40,39 @@ namespace Application
 			bool ContainsString(std::string name);
 			//Checks if specified name of int exists
 			bool ContainsInt(std::string name);
+
+			//Facade for saving presets
+			void SavePreset(
+				Game::ReadyPreset preset,
+				int attackSpeed,
+				int basicDamage,
+				int currentHealth,
+				int currentPower,
+				int distanceFromCastle,
+				int experience,
+				int lane,
+				int level,
+				int maximumHealth,
+				int maximumPower,
+				int movementSpeed,
+				int range
+				);
+			//Facade for loading presents
+			void LoadPreset(
+				Game::ReadyPreset preset,
+				int& attackSpeed,
+				int& basicDamage,
+				int& currentHealth,
+				int& currentPower,
+				int& distanceFromCastle,
+				int& experience,
+				int& lane,
+				int& level,
+				int& maximumHealth,
+				int& maximumPower,
+				int& movementSpeed,
+				int& range
+				);
 	};
 }
 

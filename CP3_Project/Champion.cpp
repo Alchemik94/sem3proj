@@ -3,6 +3,10 @@
 
 #include "Champion.h"
 #include "EnemiesFilter.h"
+#include "SingleDataKeeper.h"
+
+#include <cstdio>
+#include <string>
 
 namespace Game
 {
@@ -23,16 +27,34 @@ namespace Game
 		_range = 0;
 	}
 
+	Champion::Champion(ReadyPreset preset) : Champion()
+	{
+		Application::SingleDataKeeper::Instance()->LoadPreset(preset,
+			_attackSpeed,
+			_basicDamage,
+			_currentHealth,
+			_currentPower,
+			_distanceFromCastle,
+			_experience,
+			_lane,
+			_level,
+			_maximumHealth,
+			_maximumPower,
+			_movementSpeed,
+			_range);
+
+		DisplayOnMap();
+		_displayed = true;
+	}
+
 	int Champion::Modification(TypeOfChange type, int change)
 	{
 		switch (type)
 		{
 			case TypeOfChange::Gain:
-			case TypeOfChange::Up:
 				return change;
 				break;
 			case TypeOfChange::Loose:
-			case TypeOfChange::Down:
 				return -change;
 				break;
 			default:
@@ -102,6 +124,7 @@ namespace Game
 
 	void Champion::DisplayChange(ChampionParameters param, TypeOfChange type, int change)
 	{
+		Direction direction;
 		switch (param)
 		{
 			case ChampionParameters::CurrentHealth:
@@ -110,11 +133,11 @@ namespace Game
 					DisplayDeath();
 				break;
 			case ChampionParameters::DistanceFromCastle:
-				Direction direction = type == TypeOfChange::Gain ? Direction::Right : Direction::Left;
+				direction = type == TypeOfChange::Gain ? Direction::Right : Direction::Left;
 				DisplayMove(direction,change);
 				break;
 			case ChampionParameters::Lane:
-				Direction direction = type == TypeOfChange::Up ? Direction::Up : Direction::Down;
+				direction = type == TypeOfChange::Gain ? Direction::Up : Direction::Down;
 				DisplayMove(direction, change);
 				break;
 			case ChampionParameters::MaximumHealth:
@@ -145,7 +168,7 @@ namespace Game
 
 		std::vector<Champion*> filteredEnemies = filter->Filter(this, enemies);
 
-		if (filteredEnemies.size>0)
+		if (filteredEnemies.size()>0)
 			DisplayAttack(filteredEnemies);
 
 		for (int i = 0; i < filteredEnemies.size(); ++i)
@@ -162,7 +185,7 @@ namespace Game
 
 	void Champion::DisplayBeingAttacked()
 	{
-		//to implement
+		//TODO
 	}
 
 	void Champion::DisplayCurrentHealthChange(TypeOfChange type, int change)
@@ -178,15 +201,12 @@ namespace Game
 	void Champion::DisplayOnMap()
 	{
 		//TODO
-
-		//must be here
-		_displayed = true;
 	}
 
 	//TODO by GM
 	void Champion::Move(Direction direction)
 	{
-		//TODO
+		//TODO by GM
 	}
 }
 

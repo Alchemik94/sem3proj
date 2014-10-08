@@ -26,8 +26,6 @@ namespace Game
 	{
 		Gain,
 		Loose,
-		Up,
-		Down,
 	};
 
 	enum Direction
@@ -36,6 +34,13 @@ namespace Game
 		Down,
 		Left,
 		Right,
+	};
+
+	enum ReadyPreset
+	{
+		//any preset declared here have to be added as an entry in SingleDataKeeper constructor
+		PlayerKnight,
+		AIKnight,
 	};
 
 	class Champion
@@ -57,6 +62,9 @@ namespace Game
 			int& GetChangingParameter(ChampionParameters param);
 			int Modification(TypeOfChange type, int change);
 			void DisplayChange(ChampionParameters param, TypeOfChange type, int change);
+			Champion();
+			//potentially dangerous to be anywhere else
+			void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
 		protected:
 			//abstract ones, which will be defined for every derived class
 			virtual Application::Filter* CreateFilter() = NULL;
@@ -68,16 +76,14 @@ namespace Game
 			virtual void DisplayBeingAttacked();
 			virtual void DisplayCurrentHealthChange(TypeOfChange type, int change);
 			virtual void DisplayMaximumHealthChange(TypeOfChange type, int change);
-			virtual void DisplayOnMap();
-
-			//no need to make them public, but may needed in derived classes - not yet (maybe in display)
-			virtual void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
-			virtual int GetParameter(ChampionParameters param);
+			//no sense to make it virtual - used only in constructor
+			void DisplayOnMap();
 		public:
-			Champion();
+			Champion(ReadyPreset preset);
 			virtual void Attack(std::vector<Champion*> enemies);
 			virtual void Move(Direction direction);
 			bool IsAlive();
+			virtual int GetParameter(ChampionParameters param);
 	};
 }
 

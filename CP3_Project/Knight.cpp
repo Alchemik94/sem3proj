@@ -6,10 +6,9 @@
 
 namespace Game
 {
-	Knight::Knight() :Champion()
+	Knight::Knight(ReadyPreset preset) :Champion(preset)
 	{
-		//we have to create balance of parameters
-		DisplayOnMap();
+		
 	}
 
 	Application::Filter* Knight::CreateFilter()

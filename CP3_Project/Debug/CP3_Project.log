@@ -1,16 +1,18 @@
-﻿  Knight.cpp
+﻿  SingleDataKeeper.cpp
   Champion.cpp
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(144): warning C4018: '<' : signed/unsigned mismatch
-  Application.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(174): warning C4018: '<' : signed/unsigned mismatch
   Generating Code...
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(41): warning C4715: 'Game::Champion::Modification' : not all control paths return a value
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(87): warning C4715: 'Game::Champion::GetChangingParameter' : not all control paths return a value
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(64): warning C4715: 'Game::Champion::Modification' : not all control paths return a value
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(110): warning C4715: 'Game::Champion::GetChangingParameter' : not all control paths return a value
   Compiling...
+  Main.cpp
+  Knight.cpp
   EnemiesFilter.cpp
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(39): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(43): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(48): warning C4018: '<' : signed/unsigned mismatch
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(57): warning C4018: '<' : signed/unsigned mismatch
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(68): warning C4018: '<' : signed/unsigned mismatch
+  Application.cpp
   Generating Code...
   CP3_Project.vcxproj -> C:\Users\Grzegorz\Dropbox\GitHub\sem3proj\CP3_Project\Debug\CP3_Project.exe

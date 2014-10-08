@@ -14,7 +14,7 @@ namespace Game
 			virtual void DisplayDeath();
 			virtual void DisplayMove(Direction direction, int change);
 		public:
-			Knight();
+			Knight(ReadyPreset preset);
 	};
 }
 

@@ -7,6 +7,8 @@
 	#include <vector>
 	#include <iostream>
 	#include <conio.h>
+	#include "Knight.h"
+	#include "Champion.h"
 #endif
 
 namespace Application
