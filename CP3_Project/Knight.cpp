@@ -9,11 +9,12 @@ namespace Game
 	Knight::Knight() :Champion()
 	{
 		//we have to create balance of parameters
+		DisplayOnMap();
 	}
 
 	Application::Filter* Knight::CreateFilter()
 	{
-		return (new EnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter())->Append(new ClosestOneEnemiesFilter());
+		return (new EnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter());
 	}
 
 	void Knight::DisplayAttack(std::vector<Champion*> filteredEnemies)
@@ -26,7 +27,10 @@ namespace Game
 		//to implement
 	}
 
-
+	void Knight::DisplayMove(Direction direction, int change)
+	{
+		//to implement
+	}
 }
 
 #endif

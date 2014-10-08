@@ -12,6 +12,7 @@ namespace Game
 			virtual Application::Filter* CreateFilter();
 			virtual void DisplayAttack(std::vector<Champion*> filteredEnemies);
 			virtual void DisplayDeath();
+			virtual void DisplayMove(Direction direction, int change);
 		public:
 			Knight();
 	};

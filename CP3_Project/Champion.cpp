@@ -8,6 +8,7 @@ namespace Game
 {
 	Champion::Champion()
 	{
+		_displayed = false;
 		_attackSpeed = 0;
 		_basicDamage = 0;
 		_currentHealth = 0;
@@ -95,7 +96,8 @@ namespace Game
 	{
 		int& parameter = GetChangingParameter(param);
 		parameter += Modification(type, change);
-		DisplayChange(param,type,change);
+		if (_displayed)
+			DisplayChange(param,type,change);
 	}
 
 	void Champion::DisplayChange(ChampionParameters param, TypeOfChange type, int change)
@@ -103,34 +105,38 @@ namespace Game
 		switch (param)
 		{
 			case ChampionParameters::CurrentHealth:
-				break;
-			case ChampionParameters::CurrentPower:
+				DisplayCurrentHealthChange(type,change);
+				if (IsAlive() == false)
+					DisplayDeath();
 				break;
 			case ChampionParameters::DistanceFromCastle:
+				Direction direction = type == TypeOfChange::Gain ? Direction::Right : Direction::Left;
+				DisplayMove(direction,change);
+				break;
+			case ChampionParameters::Lane:
+				Direction direction = type == TypeOfChange::Up ? Direction::Up : Direction::Down;
+				DisplayMove(direction, change);
+				break;
+			case ChampionParameters::MaximumHealth:
+				DisplayMaximumHealthChange(type,change);
+				break;
+			//may be implemented in further versions
+			case ChampionParameters::CurrentPower:
 				break;
 			case ChampionParameters::Experience:
 				break;
-			case ChampionParameters::Lane:
-				break;
 			case ChampionParameters::Level:
-				break;
-			case ChampionParameters::MaximumHealth:
 				break;
 			case ChampionParameters::MaximumPower:
 				break;
+			//not necessarily displayed
 			case ChampionParameters::AttackSpeed:
 			case ChampionParameters::BasicDamage:
 			case ChampionParameters::MovementSpeed:
 			case ChampionParameters::Range:
 			default:
-				//not necessarily displayed
 				break;
 		}
-	}
-
-	void Champion::DisplayBeingAttacked()
-	{
-		//to implement
 	}
 
 	void Champion::Attack(std::vector<Champion*> enemies)
@@ -139,13 +145,48 @@ namespace Game
 
 		std::vector<Champion*> filteredEnemies = filter->Filter(this, enemies);
 
-		DisplayAttack(filteredEnemies);
+		if (filteredEnemies.size>0)
+			DisplayAttack(filteredEnemies);
 
 		for (int i = 0; i < filteredEnemies.size(); ++i)
 		{
 			filteredEnemies[i]->DisplayBeingAttacked();
 			filteredEnemies[i]->ChangeStatistics(CurrentHealth, Loose, GetParameter(BasicDamage));
 		}
+	}
+
+	bool Champion::IsAlive()
+	{
+		return _currentHealth>0;
+	}
+
+	void Champion::DisplayBeingAttacked()
+	{
+		//to implement
+	}
+
+	void Champion::DisplayCurrentHealthChange(TypeOfChange type, int change)
+	{
+		//TODO
+	}
+
+	void Champion::DisplayMaximumHealthChange(TypeOfChange type, int change)
+	{
+		//TODO
+	}
+
+	void Champion::DisplayOnMap()
+	{
+		//TODO
+
+		//must be here
+		_displayed = true;
+	}
+
+	//TODO by GM
+	void Champion::Move(Direction direction)
+	{
+		//TODO
 	}
 }
 
