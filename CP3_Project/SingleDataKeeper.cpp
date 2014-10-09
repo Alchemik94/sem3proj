@@ -2,6 +2,7 @@
 #define _SINGLE_DATA_KEEPER_INITIALIZER
 
 #include "SingleDataKeeper.h"
+#include "Application.h"
 
 using namespace std;
 
@@ -19,8 +20,13 @@ namespace Application
 	{
 		if (!_initialized)
 		{
-			_initialized = true;
-			_instance = new SingleDataKeeper();
+			LOCK_VARIABLES;
+			if (!_initialized)
+			{
+				_initialized = true;
+				_instance = new SingleDataKeeper();
+			}
+			UNLOCK_VARIABLES;
 		}
 		return _instance;
 	}
@@ -37,26 +43,24 @@ namespace Application
 
 	void SingleDataKeeper::KeepString(string name, string value)
 	{
-		if (ContainsString(name))
-			GetString(name) = value;
-		else
-			_stringDictionary.emplace(name, value);
+		LOCK_VARIABLES;
+		_stringDictionary.emplace(name, value);
+		UNLOCK_VARIABLES;
 	}
 
 	void SingleDataKeeper::KeepInt(string name, int value)
 	{
-		if (ContainsInt(name))
-			GetInt(name) = value;
-		else
-			_intDictionary.emplace(name, value);
+		LOCK_VARIABLES;
+		_intDictionary.emplace(name, value);
+		UNLOCK_VARIABLES;
 	}
 
-	string& SingleDataKeeper::GetString(string name)
+	string SingleDataKeeper::GetString(string name)
 	{
 		return _stringDictionary[name];
 	}
 	
-	int& SingleDataKeeper::GetInt(string name)
+	int SingleDataKeeper::GetInt(string name)
 	{
 		return _intDictionary[name];
 	}

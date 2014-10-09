@@ -2,6 +2,7 @@
 #define _TIMER_DEFINITION
 
 #include "Timer.h"
+#include <Windows.h>
 
 namespace Application
 {
@@ -9,26 +10,35 @@ namespace Application
 	{
 		_gap = msec;
 		_internalFunction = function;
+		_running = false;
 	}
 
-	void Timer::Caller()
+	void Timer::Caller(Timer* timer)
 	{
-		//TODO
+		while (timer->_running)
+		{
+			Sleep(timer->_gap);
+			timer->_internalFunction();
+		}
 	}
 
 	void Timer::Run()
 	{
-		//TODO
+		//avoids to loose the handle to thread and memory leakage
+		if (_running) return;
+
+		_running = true;
+		_functionRunner = new std::thread(Caller,this);
 	}
 
 	void Timer::Stop()
 	{
-		//TODO
-	}
-
-	void Timer::Reset()
-	{
-		//TODO
+		//avoids access violations
+		if (_running == false) return;
+		
+		_running = false;
+		_functionRunner->join();
+		delete _functionRunner;
 	}
 
 	Timer::~Timer()

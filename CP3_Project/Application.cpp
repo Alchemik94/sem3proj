@@ -1,6 +1,7 @@
 #ifndef _APPLICATION_INITIALIZER
 #define _APPLICATION_INITIALIZER
 
+#include <atomic>
 #include "Application.h"
 
 #ifdef _DEBUG
@@ -13,9 +14,11 @@
 
 namespace Application
 {
+	std::atomic_flag MainApplication::Lock = ATOMIC_FLAG_INIT;
+
 	MainApplication::MainApplication()
 	{
-
+		
 	}
 
 	int MainApplication::Run()

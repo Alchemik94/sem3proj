@@ -2,6 +2,10 @@
 #define _MAIN_APPLICATION
 
 #include "SingleDataKeeper.h"
+#include <atomic>
+
+#define LOCK_VARIABLES while (Application::MainApplication::Lock.test_and_set())
+#define UNLOCK_VARIABLES Application::MainApplication::Lock.clear()
 
 namespace Application
 {
@@ -14,6 +18,8 @@ namespace Application
 			int Run();
 			//Tests current module
 			void Test();
+			//Multithreading lock
+			static std::atomic_flag Lock;
 	};
 }
 #endif

@@ -10,22 +10,19 @@ namespace Application
 	{
 		private:
 			int _gap;
-			volatile int _current;
 			volatile bool _running;
 			std::thread* _functionRunner;
 			typedef void(*Function)();
 			Function _internalFunction;
 			//Calls _internalFunction in a specified period of time. Ran only on _functionRunner thread.
-			void Caller();
+			static void Caller(Timer* timer);
 		public:
-			//Standard constructor. Defines the time timer runs the function passed as second argument.
+			//Standard constructor. Defines the time timer runs in miliseconds before using the function passed as second argument.
 			Timer(int msec, Function function);
 			//Starts timer to perform its work.
 			void Run();
 			//Stops timer.
 			void Stop();
-			//Resets timer current period.
-			void Reset();
 			~Timer();
 	};
 }

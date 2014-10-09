@@ -4,6 +4,7 @@
 #include "Champion.h"
 #include "EnemiesFilter.h"
 #include "SingleDataKeeper.h"
+#include "Application.h"
 
 #include <cstdio>
 #include <string>
@@ -29,6 +30,7 @@ namespace Game
 
 	Champion::Champion(ReadyPreset preset) : Champion()
 	{
+		LOCK_VARIABLES;
 		Application::SingleDataKeeper::Instance()->LoadPreset(
 			preset,
 			_attackSpeed,
@@ -47,6 +49,7 @@ namespace Game
 
 		DisplayOnMap();
 		_displayed = true;
+		UNLOCK_VARIABLES;
 	}
 
 	int Champion::Modification(TypeOfChange type, int change)
@@ -170,13 +173,19 @@ namespace Game
 
 		std::vector<Champion*> filteredEnemies = filter->Filter(this, enemies);
 
-		if (filteredEnemies.size()>0)
+		if (filteredEnemies.size() > 0)
+		{
+			LOCK_VARIABLES;
 			DisplayAttack(filteredEnemies);
+			UNLOCK_VARIABLES;
+		}
 
 		for (int i = 0; i < filteredEnemies.size(); ++i)
 		{
+			LOCK_VARIABLES;
 			filteredEnemies[i]->DisplayBeingAttacked();
 			filteredEnemies[i]->ChangeStatistics(CurrentHealth, Loose, GetParameter(BasicDamage));
+			UNLOCK_VARIABLES;
 		}
 	}
 
@@ -209,6 +218,7 @@ namespace Game
 	void Champion::Move(Direction direction)
 	{
 		//TODO by GM
+		//has to be thread-safe
 	}
 }
 

@@ -33,9 +33,9 @@ namespace Application
 			//Keeps int value under specified name
 			void KeepInt(std::string name, int value);
 			//Gets string value from specified name
-			std::string& GetString(std::string name);
+			std::string GetString(std::string name);
 			//Gets int value from specified name
-			int& GetInt(std::string name);
+			int GetInt(std::string name);
 			//Checks if specified name of string exists
 			bool ContainsString(std::string name);
 			//Checks if specified name of int exists
