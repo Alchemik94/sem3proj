@@ -29,7 +29,8 @@ namespace Game
 
 	Champion::Champion(ReadyPreset preset) : Champion()
 	{
-		Application::SingleDataKeeper::Instance()->LoadPreset(preset,
+		Application::SingleDataKeeper::Instance()->LoadPreset(
+			preset,
 			_attackSpeed,
 			_basicDamage,
 			_currentHealth,
@@ -41,7 +42,8 @@ namespace Game
 			_maximumHealth,
 			_maximumPower,
 			_movementSpeed,
-			_range);
+			_range
+			);
 
 		DisplayOnMap();
 		_displayed = true;
@@ -195,7 +197,7 @@ namespace Game
 
 	void Champion::DisplayMaximumHealthChange(TypeOfChange type, int change)
 	{
-		//TODO
+		//TODO - maybe as DisplayCurrentHealthChange if whole health bar will possibly be updated?
 	}
 
 	void Champion::DisplayOnMap()
