@@ -19,7 +19,14 @@ namespace Game
 
 			std::pair<ActionType, DirectionalType> Pop()
 			{
-				return _queue.pop();
+				auto top = _queue.front();
+				_queue.pop();
+				return top;
+			}
+
+			bool IsEmpty()
+			{
+				return _queue.empty();
 			}
 	};
 }

@@ -5,6 +5,7 @@
 #include "Filter.h"
 #include "ActionQueue.h"
 #include "Timer.h"
+#include "ITimerParam.h"
 
 namespace Game
 {
@@ -52,7 +53,7 @@ namespace Game
 		AIKnight,
 	};
 
-	class Champion
+	class Champion: Application::ITimerParameter
 	{
 		private:
 			int _currentHealth,
@@ -75,11 +76,12 @@ namespace Game
 			//potentially dangerous to be anywhere else
 			void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
 			ActionQueue<Action,Direction> _actionQueue;
-			void MoveHandler();
+			static void MoveHandler(ITimerParameter* champion);
 			volatile bool _afterAttack;
-			void AttackCounterReseter();
-			//Application::Timer _attackTimer;
-			//Application::Timer _moveHandlerTimer;
+			static void AttackCounterResetter(ITimerParameter* champion);
+			Application::Timer _attackTimer;
+			Application::Timer _moveHandlerTimer;
+			static std::pair<ChampionParameters, TypeOfChange> DirectionToParams(Direction direction);
 		protected:
 			//abstract ones, which will be defined for every derived class
 			virtual Application::Filter* CreateFilter() = NULL;
@@ -95,6 +97,7 @@ namespace Game
 			void DisplayOnMap();
 		public:
 			Champion(ReadyPreset preset);
+			~Champion();
 			virtual void Attack(std::vector<Champion*> enemies);
 			virtual void Move(Direction direction);
 			bool IsAlive();

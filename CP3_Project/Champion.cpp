@@ -11,7 +11,7 @@
 
 namespace Game
 {
-	Champion::Champion() //:_attackTimer(0, &Game::Champion::AttackCounterReseter)
+	Champion::Champion() :_attackTimer(0, &Game::Champion::AttackCounterResetter, this), _moveHandlerTimer(0, &Game::Champion::MoveHandler, this)
 	{
 		_actionQueue = ActionQueue<Action, Direction>();
 		_afterAttack = false;
@@ -49,11 +49,21 @@ namespace Game
 			_range
 			);
 
-//		_attackTimer = Application::Timer((int)(1000 / _attackSpeed), &Game::Champion::AttackCounterReseter);
+		_attackTimer = Application::Timer((int)(1000 / _attackSpeed), &Game::Champion::AttackCounterResetter,this);
+		_moveHandlerTimer = Application::Timer((int)(1000 / _movementSpeed), &Game::Champion::MoveHandler, this);
+
+		_attackTimer.Run();
+		_moveHandlerTimer.Run();
 
 		DisplayOnMap();
 		_displayed = true;
 		UNLOCK_APPLICATION_VARIABLES;
+	}
+
+	Champion::~Champion()
+	{
+		_attackTimer.Stop();
+		_moveHandlerTimer.Stop();
 	}
 
 	int Champion::Modification(TypeOfChange type, int change)
@@ -201,10 +211,11 @@ namespace Game
 		UNLOCK_APPLICATION_VARIABLES;
 	}
 
-	void Champion::AttackCounterReseter()
+	void Champion::AttackCounterResetter(ITimerParameter* champ)
 	{
+		Champion* champion = static_cast<Champion*>(champ);
 		LOCK_APPLICATION_VARIABLES;
-		_afterAttack = false;
+		champion->_afterAttack = false;
 		UNLOCK_APPLICATION_VARIABLES;
 	}
 
@@ -240,9 +251,51 @@ namespace Game
 		UNLOCK_APPLICATION_VARIABLES;
 	}
 
-	void Champion::MoveHandler()
+	void Champion::MoveHandler(ITimerParameter* champ)
 	{
-		//TODO by GM
+		Champion* champion = static_cast<Champion*>(champ);
+		if (champion->_actionQueue.IsEmpty())
+			return;
+		LOCK_APPLICATION_VARIABLES;
+		std::pair<Action, Direction> top = champion->_actionQueue.Pop();
+		UNLOCK_APPLICATION_VARIABLES;
+		if (top.first != Action::Move)
+			return;
+		ChampionParameters param = DirectionToParams(top.second).first;
+		TypeOfChange type = DirectionToParams(top.second).second;
+
+		LOCK_APPLICATION_VARIABLES;
+		champion->ChangeStatistics(param, type, 1);
+		UNLOCK_APPLICATION_VARIABLES;
+	}
+
+	std::pair<ChampionParameters, TypeOfChange> Champion::DirectionToParams(Direction direction)
+	{
+		std::pair<ChampionParameters, TypeOfChange> params;
+		switch (direction)
+		{
+			case Direction::Down:
+				params.first = Lane;
+				params.second = Loose;
+				break;
+			case Direction::Left:
+				params.first = DistanceFromCastle;
+				params.second = Loose;
+				break;
+			case Direction::Right:
+				params.first = DistanceFromCastle;
+				params.second = Gain;
+				break;
+			case Direction::Up:
+				params.first = Lane;
+				params.second = Gain;
+				break;
+			case Direction::None:
+			default:
+				//throw an error!
+				break;
+		}
+		return params;
 	}
 }
 
