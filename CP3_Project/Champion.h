@@ -2,58 +2,16 @@
 #define _CHAMPION_INTERFACE
 
 #include <vector>
-#include "Filter.h"
+#include "GameEnums.h"
+#include "IFilter.h"
 #include "ActionQueue.h"
 #include "Timer.h"
 #include "ITimerParam.h"
+#include "IChampionDisplayer.h"
 
 namespace Game
 {
-	enum ChampionParameters
-	{
-		CurrentHealth,
-		MaximumHealth,
-		CurrentPower,
-		MaximumPower,
-		Range,
-		MovementSpeed,
-		BasicDamage,
-		AttackSpeed,
-		Level,
-		Experience,
-		Lane,
-		DistanceFromCastle,
-	};
-
-	enum TypeOfChange
-	{
-		Gain,
-		Loose,
-	};
-
-	enum Direction
-	{
-		Up,
-		Down,
-		Left,
-		Right,
-		None,
-	};
-
-	enum Action
-	{
-		Attack,
-		Move,
-	};
-
-	enum ReadyPreset
-	{
-		//any preset declared here have to be added as an entry in SingleDataKeeper constructor
-		PlayerKnight,
-		AIKnight,
-	};
-
-	class Champion: Application::ITimerParameter
+	class Champion: Application::ITimerParameter, protected virtual Display::IChampionDisplayer<Champion>
 	{
 		private:
 			int _currentHealth,
@@ -69,34 +27,45 @@ namespace Game
 				_lane,
 				_distanceFromCastle;
 			bool _displayed;
-			int& GetChangingParameter(ChampionParameters param);
-			int Modification(TypeOfChange type, int change);
-			void DisplayChange(ChampionParameters param, TypeOfChange type, int change);
-			Champion();
-			//potentially dangerous to be anywhere else
-			void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
-			ActionQueue<Action,Direction> _actionQueue;
-			static void MoveHandler(ITimerParameter* champion);
+			
+			//queue used to move champion
+			ActionQueue<Action, Direction> _actionQueue;
+			//bool letting us to make delays between attacks
 			volatile bool _afterAttack;
-			static void AttackCounterResetter(ITimerParameter* champion);
+			//timer resetting _afterAttack flag
 			Application::Timer _attackTimer;
+			//timer moving champion with specified speed
 			Application::Timer _moveHandlerTimer;
+
+			//function returning parameter we want to change
+			int& GetChangingParameter(ChampionParameters param);
+			//function obtaining modification to specified value
+			int Modification(TypeOfChange type, int change);
+			
+			//display methods caller
+			void DisplayChange(ChampionParameters param, TypeOfChange type, int change);
+			
+			//standard constructor which is internally used for primary initialization
+			Champion();
+
+			//Changes parameters on demand
+			void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
+
+			//used in timer to move champion graphics
+			static void MoveHandler(ITimerParameter* champion);
+			//used in timer to reset attack flag
+			static void AttackCounterResetter(ITimerParameter* champion);
+			
+//TODO
+			//should be moved to kind of enum converter
 			static std::pair<ChampionParameters, TypeOfChange> DirectionToParams(Direction direction);
 		protected:
-			//abstract ones, which will be defined for every derived class
-			virtual Application::Filter* CreateFilter() = NULL;
-			virtual void DisplayAttack(std::vector<Champion*> filteredEnemies) = NULL;
-			virtual void DisplayDeath() = NULL;
-			virtual void DisplayMove(Direction direction, int change) = NULL;
-			
-			//common, the same for every class (for now)
-			virtual void DisplayBeingAttacked();
-			virtual void DisplayCurrentHealthChange(TypeOfChange type, int change);
-			virtual void DisplayMaximumHealthChange(TypeOfChange type, int change);
-			//no sense to make it virtual - used only in constructor
-			void DisplayOnMap();
-		public:
+			//abstract one, which will be defined for every derived class
+			virtual Application::IFilter* CreateFilter() = NULL;
+
+			//Parametrized constructor allowing to create champion from ready preset.
 			Champion(ReadyPreset preset);
+		public:
 			~Champion();
 			virtual void Attack(std::vector<Champion*> enemies);
 			virtual void Move(Direction direction);

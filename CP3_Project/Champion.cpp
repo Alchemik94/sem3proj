@@ -198,7 +198,7 @@ namespace Game
 			UNLOCK_APPLICATION_VARIABLES;
 		}
 
-		for (int i = 0; i < filteredEnemies.size(); ++i)
+		for (unsigned int i = 0; i < filteredEnemies.size(); ++i)
 		{
 			LOCK_APPLICATION_VARIABLES;
 			filteredEnemies[i]->DisplayBeingAttacked();
@@ -222,26 +222,6 @@ namespace Game
 	bool Champion::IsAlive()
 	{
 		return _currentHealth>0;
-	}
-
-	void Champion::DisplayBeingAttacked()
-	{
-		//TODO
-	}
-
-	void Champion::DisplayCurrentHealthChange(TypeOfChange type, int change)
-	{
-		//TODO
-	}
-
-	void Champion::DisplayMaximumHealthChange(TypeOfChange type, int change)
-	{
-		//TODO - maybe as DisplayCurrentHealthChange if whole health bar will possibly be updated?
-	}
-
-	void Champion::DisplayOnMap()
-	{
-		//TODO
 	}
 
 	void Champion::Move(Direction direction)

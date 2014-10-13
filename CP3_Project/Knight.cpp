@@ -11,24 +11,9 @@ namespace Game
 		
 	}
 
-	Application::Filter* Knight::CreateFilter()
+	Application::IFilter* Knight::CreateFilter()
 	{
 		return (new EnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter());
-	}
-
-	void Knight::DisplayAttack(std::vector<Champion*> filteredEnemies)
-	{
-		//to implement
-	}
-
-	void Knight::DisplayDeath()
-	{
-		//to implement
-	}
-
-	void Knight::DisplayMove(Direction direction, int change)
-	{
-		//to implement
 	}
 }
 

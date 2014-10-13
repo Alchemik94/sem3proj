@@ -30,6 +30,7 @@ namespace Game
 	}
 
 #define ABS(x) ((x)>=0 ? (x) : -(x))
+
 	int DistanceEnemiesFilter::Distance(Champion* first, Champion* second)
 	{
 		int xDist = ABS(first->GetParameter(ChampionParameters::DistanceFromCastle) - second->GetParameter(ChampionParameters::DistanceFromCastle));
@@ -40,6 +41,7 @@ namespace Game
 
 		return distance > (int)distance ? (int)distance + 1 : (int)distance;
 	}
+
 #undef ABS(x)
 
 	std::vector<Champion*> DistanceEnemiesFilter::Filter(Champion* attackingChampion, std::vector<Champion*> enemies)

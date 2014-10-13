@@ -2,17 +2,15 @@
 #define _KNIGHT_DECLARATION
 
 #include "Champion.h"
+#include "IKnightDisplayer.h"
 
 namespace Game
 {
-	class Knight : public Champion
+	class Knight : public Champion, protected Display::IKnightDisplayer
 	{
 		protected:
-			//Knight attacks first enemy in range on his lane.
-			virtual Application::Filter* CreateFilter();
-			virtual void DisplayAttack(std::vector<Champion*> filteredEnemies);
-			virtual void DisplayDeath();
-			virtual void DisplayMove(Direction direction, int change);
+			//Knight attacks all enemies in range on his lane.
+			virtual Application::IFilter* CreateFilter();
 		public:
 			Knight(ReadyPreset preset);
 	};
