@@ -4,8 +4,8 @@
 #include "SingleDataKeeper.h"
 #include <atomic>
 
-#define LOCK_VARIABLES while (Application::MainApplication::Lock.test_and_set())
-#define UNLOCK_VARIABLES Application::MainApplication::Lock.clear()
+#define LOCK_APPLICATION_VARIABLES while (Application::MainApplication::Lock.test_and_set())
+#define UNLOCK_APPLICATION_VARIABLES Application::MainApplication::Lock.clear()
 
 namespace Application
 {

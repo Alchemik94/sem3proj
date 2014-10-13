@@ -74,6 +74,7 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionQueue.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Champion.h" />
     <ClInclude Include="EnemiesFilter.h" />

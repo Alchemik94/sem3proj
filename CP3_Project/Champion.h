@@ -3,6 +3,8 @@
 
 #include <vector>
 #include "Filter.h"
+#include "ActionQueue.h"
+#include "Timer.h"
 
 namespace Game
 {
@@ -34,6 +36,13 @@ namespace Game
 		Down,
 		Left,
 		Right,
+		None,
+	};
+
+	enum Action
+	{
+		Attack,
+		Move,
 	};
 
 	enum ReadyPreset
@@ -65,6 +74,12 @@ namespace Game
 			Champion();
 			//potentially dangerous to be anywhere else
 			void ChangeStatistics(ChampionParameters param, TypeOfChange type, int change);
+			ActionQueue<Action,Direction> _actionQueue;
+			void MoveHandler();
+			volatile bool _afterAttack;
+			void AttackCounterReseter();
+			//Application::Timer _attackTimer;
+			//Application::Timer _moveHandlerTimer;
 		protected:
 			//abstract ones, which will be defined for every derived class
 			virtual Application::Filter* CreateFilter() = NULL;

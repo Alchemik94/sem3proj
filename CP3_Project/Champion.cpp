@@ -11,8 +11,10 @@
 
 namespace Game
 {
-	Champion::Champion()
+	Champion::Champion() //:_attackTimer(0, &Game::Champion::AttackCounterReseter)
 	{
+		_actionQueue = ActionQueue<Action, Direction>();
+		_afterAttack = false;
 		_displayed = false;
 		_attackSpeed = 0;
 		_basicDamage = 0;
@@ -30,7 +32,7 @@ namespace Game
 
 	Champion::Champion(ReadyPreset preset) : Champion()
 	{
-		LOCK_VARIABLES;
+		LOCK_APPLICATION_VARIABLES;
 		Application::SingleDataKeeper::Instance()->LoadPreset(
 			preset,
 			_attackSpeed,
@@ -47,9 +49,11 @@ namespace Game
 			_range
 			);
 
+//		_attackTimer = Application::Timer((int)(1000 / _attackSpeed), &Game::Champion::AttackCounterReseter);
+
 		DisplayOnMap();
 		_displayed = true;
-		UNLOCK_VARIABLES;
+		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 	int Champion::Modification(TypeOfChange type, int change)
@@ -169,24 +173,39 @@ namespace Game
 
 	void Champion::Attack(std::vector<Champion*> enemies)
 	{
+		while (_afterAttack);
+
 		EnemiesFilter* filter = static_cast<EnemiesFilter*>(CreateFilter());
 
 		std::vector<Champion*> filteredEnemies = filter->Filter(this, enemies);
 
+		delete filter;
+
 		if (filteredEnemies.size() > 0)
 		{
-			LOCK_VARIABLES;
+			LOCK_APPLICATION_VARIABLES;
 			DisplayAttack(filteredEnemies);
-			UNLOCK_VARIABLES;
+			UNLOCK_APPLICATION_VARIABLES;
 		}
 
 		for (int i = 0; i < filteredEnemies.size(); ++i)
 		{
-			LOCK_VARIABLES;
+			LOCK_APPLICATION_VARIABLES;
 			filteredEnemies[i]->DisplayBeingAttacked();
 			filteredEnemies[i]->ChangeStatistics(CurrentHealth, Loose, GetParameter(BasicDamage));
-			UNLOCK_VARIABLES;
+			UNLOCK_APPLICATION_VARIABLES;
 		}
+
+		LOCK_APPLICATION_VARIABLES;
+		_afterAttack = true;
+		UNLOCK_APPLICATION_VARIABLES;
+	}
+
+	void Champion::AttackCounterReseter()
+	{
+		LOCK_APPLICATION_VARIABLES;
+		_afterAttack = false;
+		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 	bool Champion::IsAlive()
@@ -214,11 +233,16 @@ namespace Game
 		//TODO
 	}
 
-	//TODO by GM
 	void Champion::Move(Direction direction)
 	{
+		LOCK_APPLICATION_VARIABLES;
+		_actionQueue.Push(Action::Move, direction);
+		UNLOCK_APPLICATION_VARIABLES;
+	}
+
+	void Champion::MoveHandler()
+	{
 		//TODO by GM
-		//has to be thread-safe
 	}
 }
 

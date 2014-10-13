@@ -20,13 +20,13 @@ namespace Application
 	{
 		if (!_initialized)
 		{
-			LOCK_VARIABLES;
+			LOCK_APPLICATION_VARIABLES;
 			if (!_initialized)
 			{
 				_initialized = true;
 				_instance = new SingleDataKeeper();
 			}
-			UNLOCK_VARIABLES;
+			UNLOCK_APPLICATION_VARIABLES;
 		}
 		return _instance;
 	}
@@ -43,16 +43,16 @@ namespace Application
 
 	void SingleDataKeeper::KeepString(string name, string value)
 	{
-		LOCK_VARIABLES;
+		LOCK_APPLICATION_VARIABLES;
 		_stringDictionary.emplace(name, value);
-		UNLOCK_VARIABLES;
+		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 	void SingleDataKeeper::KeepInt(string name, int value)
 	{
-		LOCK_VARIABLES;
+		LOCK_APPLICATION_VARIABLES;
 		_intDictionary.emplace(name, value);
-		UNLOCK_VARIABLES;
+		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 	string SingleDataKeeper::GetString(string name)
