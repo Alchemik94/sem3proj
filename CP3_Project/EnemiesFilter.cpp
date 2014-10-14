@@ -68,8 +68,17 @@ namespace Game
 	{
 		std::vector<Champion*> filtered = std::vector<Champion*>();
 		for (int i = 0; i < enemies.size(); ++i)
-		if (attackingChampion->GetParameter(ChampionParameters::Lane) == enemies[i]->GetParameter(ChampionParameters::Lane))
-			filtered.push_back(enemies[i]);
+			if (attackingChampion->GetParameter(ChampionParameters::Lane) == enemies[i]->GetParameter(ChampionParameters::Lane))
+				filtered.push_back(enemies[i]);
+		return EnemiesFilter::Filter(attackingChampion, filtered);
+	}
+
+	std::vector<Champion*> AliveEnemiesFilter::Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
+	{
+		std::vector<Champion*> filtered = std::vector<Champion*>();
+		for (int i = 0; i < enemies.size(); ++i)
+			if (enemies[i]->IsAlive())
+				filtered.push_back(enemies[i]);
 		return EnemiesFilter::Filter(attackingChampion, filtered);
 	}
 }

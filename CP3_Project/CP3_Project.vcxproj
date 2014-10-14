@@ -73,18 +73,22 @@
     <ClCompile Include="SingleDataKeeper.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="IKnightDisplayer.h" />
+    <ClCompile Include="Team.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionQueue.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Champion.h" />
+    <ClInclude Include="ChampionFactory.h" />
     <ClInclude Include="EnemiesFilter.h" />
+    <ClInclude Include="GameHolder.h" />
     <ClInclude Include="IFilter.h" />
     <ClInclude Include="GameEnums.h" />
     <ClInclude Include="IChampionDisplayer.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="SingleDataKeeper.h" />
+    <ClInclude Include="Team.h" />
     <ClInclude Include="Timer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

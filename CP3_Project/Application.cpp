@@ -5,11 +5,9 @@
 #include "Application.h"
 
 #ifdef _DEBUG
-	#include <vector>
-	#include <iostream>
-	#include <conio.h>
+	#include "Team.h"
 	#include "Knight.h"
-	#include "Champion.h"
+	#include <iostream>
 #endif
 
 namespace Application
@@ -28,7 +26,9 @@ namespace Application
 
 	void MainApplication::Test()
 	{
-
+		Game::Team* at = new Game::AutogeneratingTeam(3, Game::ReadyPreset::AIKnight);
+		Game::Team* t = new Game::Team();
+		t->push_back(new Game::Knight(Game::ReadyPreset::AIKnight));
 	}
 }
 

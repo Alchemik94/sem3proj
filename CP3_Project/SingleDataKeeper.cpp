@@ -43,16 +43,16 @@ namespace Application
 
 	void SingleDataKeeper::KeepString(string name, string value)
 	{
-		LOCK_APPLICATION_VARIABLES;
+//		LOCK_APPLICATION_VARIABLES;
 		_stringDictionary.emplace(name, value);
-		UNLOCK_APPLICATION_VARIABLES;
+//		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 	void SingleDataKeeper::KeepInt(string name, int value)
 	{
-		LOCK_APPLICATION_VARIABLES;
+//		LOCK_APPLICATION_VARIABLES;
 		_intDictionary.emplace(name, value);
-		UNLOCK_APPLICATION_VARIABLES;
+//		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 	string SingleDataKeeper::GetString(string name)

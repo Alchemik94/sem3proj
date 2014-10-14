@@ -26,7 +26,7 @@ namespace Game
 				_experience,
 				_lane,
 				_distanceFromCastle;
-			bool _displayed;
+			bool _displayed, _wait;
 			
 			//queue used to move champion
 			ActionQueue<Action, Direction> _actionQueue;
@@ -67,6 +67,8 @@ namespace Game
 			Champion(ReadyPreset preset);
 		public:
 			~Champion();
+//TODO
+			//need to be reworked
 			virtual void Attack(std::vector<Champion*> enemies);
 			virtual void Move(Direction direction);
 			bool IsAlive();

@@ -41,6 +41,12 @@ namespace Game
 		public:
 			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
 	};
+
+	class AliveEnemiesFilter: public EnemiesFilter
+	{
+		public:
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
+	};
 }
 
 #endif

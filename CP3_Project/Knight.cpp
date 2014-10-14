@@ -13,7 +13,7 @@ namespace Game
 
 	Application::IFilter* Knight::CreateFilter()
 	{
-		return (new EnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter());
+		return (new EnemiesFilter())->Append(new AliveEnemiesFilter())->Append(new LaneEnemiesFilter())->Append(new DistanceEnemiesFilter());
 	}
 }
 

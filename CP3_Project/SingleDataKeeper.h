@@ -14,9 +14,10 @@ namespace Application
 			SingleDataKeeper()
 			{
 				KeepInt("distanceBetweenLanes", 20);
+				KeepInt("deadChampionsEraserDelay", 10);
 				//To change
-				SavePreset(Game::ReadyPreset::AIKnight, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-				SavePreset(Game::ReadyPreset::PlayerKnight, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+				SavePreset(Game::ReadyPreset::AIKnight, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+				SavePreset(Game::ReadyPreset::PlayerKnight, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 			}
 			~SingleDataKeeper();
 			static SingleDataKeeper* _instance;

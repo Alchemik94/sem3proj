@@ -64,6 +64,7 @@ namespace Game
 	{
 		_attackTimer.Stop();
 		_moveHandlerTimer.Stop();
+		while (_wait);
 	}
 
 	int Champion::Modification(TypeOfChange type, int change)
@@ -77,6 +78,7 @@ namespace Game
 				return -change;
 				break;
 			default:
+//TODO
 				//error throwing
 				break;
 		}
@@ -123,6 +125,7 @@ namespace Game
 				return _range;
 				break;
 			default:
+//TODO
 				//error throwing
 				break;
 		}
@@ -136,9 +139,11 @@ namespace Game
 	void Champion::ChangeStatistics(ChampionParameters param, TypeOfChange type, int change)
 	{
 		int& parameter = GetChangingParameter(param);
+		_wait = true;
 		parameter += Modification(type, change);
 		if (_displayed)
 			DisplayChange(param,type,change);
+		_wait = false;
 	}
 
 	void Champion::DisplayChange(ChampionParameters param, TypeOfChange type, int change)
@@ -162,6 +167,7 @@ namespace Game
 			case ChampionParameters::MaximumHealth:
 				DisplayMaximumHealthChange(type,change);
 				break;
+//TODO
 			//may be implemented in further versions
 			case ChampionParameters::CurrentPower:
 				break;
@@ -272,6 +278,7 @@ namespace Game
 				break;
 			case Direction::None:
 			default:
+//TODO
 				//throw an error!
 				break;
 		}
