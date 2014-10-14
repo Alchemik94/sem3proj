@@ -1,49 +1,5 @@
-﻿  Application.cpp
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(13) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(14) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(15) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(73) : see declaration of 'Game::Champion::GetParameter'
+﻿  IKnightDisplayer.h
   Generating Code...
-  Compiling...
-  SingleDataKeeper.cpp
-  Main.cpp
-  Knight.cpp
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(13) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(14) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(15) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(73) : see declaration of 'Game::Champion::GetParameter'
-  IChampionDisplayer.cpp
-  EnemiesFilter.cpp
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(40): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(45): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(50): warning C4018: '<' : signed/unsigned mismatch
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(59): warning C4018: '<' : signed/unsigned mismatch
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(70): warning C4018: '<' : signed/unsigned mismatch
-  Champion.cpp
-  Generating Code...
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(83): warning C4715: 'Game::Champion::Modification' : not all control paths return a value
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(129): warning C4715: 'Game::Champion::GetChangingParameter' : not all control paths return a value
   Skipping... (no relevant changes detected)
   ITimerParam.h
-  IKnightDisplayer.h
-Debug\IKnightDisplayer.obj : warning LNK4042: object specified more than once; extras ignored
-Champion.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayBeingAttacked(void)" (?DisplayBeingAttacked@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXXZ)
-Knight.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayBeingAttacked(void)" (?DisplayBeingAttacked@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXXZ)
-Champion.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayCurrentHealthChange(enum Game::TypeOfChange,int)" (?DisplayCurrentHealthChange@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXW4TypeOfChange@Game@@H@Z)
-Knight.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayCurrentHealthChange(enum Game::TypeOfChange,int)" (?DisplayCurrentHealthChange@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXW4TypeOfChange@Game@@H@Z)
-Champion.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayMaximumHealthChange(enum Game::TypeOfChange,int)" (?DisplayMaximumHealthChange@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXW4TypeOfChange@Game@@H@Z)
-Knight.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayMaximumHealthChange(enum Game::TypeOfChange,int)" (?DisplayMaximumHealthChange@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXW4TypeOfChange@Game@@H@Z)
-Champion.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayOnMap(void)" (?DisplayOnMap@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXXZ) referenced in function "protected: __thiscall Game::Champion::Champion(enum Game::ReadyPreset)" (??0Champion@Game@@IAE@W4ReadyPreset@1@@Z)
-Knight.obj : error LNK2001: unresolved external symbol "public: virtual void __thiscall Display::IChampionDisplayer<class Game::Champion>::DisplayOnMap(void)" (?DisplayOnMap@?$IChampionDisplayer@VChampion@Game@@@Display@@UAEXXZ)
-Knight.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall Display::IKnightDisplayer::DisplayAttack(class std::vector<class Game::Champion *,class std::allocator<class Game::Champion *> >)" (?DisplayAttack@IKnightDisplayer@Display@@UAEXV?$vector@PAVChampion@Game@@V?$allocator@PAVChampion@Game@@@std@@@std@@@Z) referenced in function "[thunk]:public: virtual void __thiscall Display::IKnightDisplayer::DisplayAttack`adjustor{4}' (class std::vector<class Game::Champion *,class std::allocator<class Game::Champion *> >)" (?DisplayAttack@IKnightDisplayer@Display@@W3AEXV?$vector@PAVChampion@Game@@V?$allocator@PAVChampion@Game@@@std@@@std@@@Z)
-Knight.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall Display::IKnightDisplayer::DisplayDeath(void)" (?DisplayDeath@IKnightDisplayer@Display@@UAEXXZ) referenced in function "[thunk]:public: virtual void __thiscall Display::IKnightDisplayer::DisplayDeath`adjustor{4}' (void)" (?DisplayDeath@IKnightDisplayer@Display@@W3AEXXZ)
-Knight.obj : error LNK2019: unresolved external symbol "public: virtual void __thiscall Display::IKnightDisplayer::DisplayMove(enum Game::Direction,int)" (?DisplayMove@IKnightDisplayer@Display@@UAEXW4Direction@Game@@H@Z) referenced in function "[thunk]:public: virtual void __thiscall Display::IKnightDisplayer::DisplayMove`adjustor{4}' (enum Game::Direction,int)" (?DisplayMove@IKnightDisplayer@Display@@W3AEXW4Direction@Game@@H@Z)
-C:\Users\Grzegorz\Dropbox\GitHub\sem3proj\CP3_Project\Debug\CP3_Project.exe : fatal error LNK1120: 7 unresolved externals
+  CP3_Project.vcxproj -> C:\Users\Grzegorz\Dropbox\GitHub\sem3proj\CP3_Project\Debug\CP3_Project.exe

@@ -3,7 +3,7 @@
 
 #include <unordered_map>
 #include <string>
-#include "Champion.h"
+#include "GameEnums.h"
 
 namespace Application
 {

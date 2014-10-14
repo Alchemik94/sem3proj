@@ -10,6 +10,8 @@ namespace Display
 	template <class ChampionType>
 	class IChampionDisplayer
 	{
+		protected:
+			IChampionDisplayer(){}
 		public:
 			//Displays attack animation of a champion
 			virtual void DisplayAttack(std::vector<ChampionType*> filteredEnemies) = NULL;
@@ -18,15 +20,35 @@ namespace Display
 			//Displays move of a champion
 			virtual void DisplayMove(Game::Direction direction, int change) = NULL;
 
+
+
 			//Displays that champion is being attacked
-			virtual void DisplayBeingAttacked();
-			//Displays change in current health
-			virtual void DisplayCurrentHealthChange(Game::TypeOfChange type, int change);
-			//Displays change in maximum health
-			virtual void DisplayMaximumHealthChange(Game::TypeOfChange type, int change);
+			virtual void DisplayBeingAttacked()
+			{
+				//TODO
+			}
 			
+			//Displays change in current health
+			virtual void DisplayCurrentHealthChange(Game::TypeOfChange type, int change)
+			{
+				//TODO
+			}
+			
+			//Displays change in maximum health
+			virtual void DisplayMaximumHealthChange(Game::TypeOfChange type, int change)
+			{
+				//TODO - maybe as DisplayCurrentHealthChange if whole health bar will possibly be updated?
+			}
+			
+
+
 			//Shows champion on map
-			virtual void DisplayOnMap();
+			virtual void DisplayOnMap()
+			{
+				//TODO
+			}
+
+
 
 			//Returns selected champion parameter
 			virtual int GetParameter(Game::ChampionParameters param) = NULL;
