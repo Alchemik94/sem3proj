@@ -42,12 +42,14 @@ namespace Game
 		return distance > (int)distance ? (int)distance + 1 : (int)distance;
 	}
 
+
 #undef ABS(x)
+
 
 	std::vector<Champion*> DistanceEnemiesFilter::Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
 	{
 		std::vector<Champion*> filtered = std::vector<Champion*>();
-		for (int i = 0; i < enemies.size(); ++i)
+		for (unsigned int i = 0; i < enemies.size(); ++i)
 		if (Distance(attackingChampion, enemies[i]) <= attackingChampion->GetParameter(Range))
 			filtered.push_back(enemies[i]);
 		return EnemiesFilter::Filter(attackingChampion, filtered);
@@ -56,7 +58,7 @@ namespace Game
 	std::vector<Champion*> ClosestOneEnemiesFilter::Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
 	{
 		Champion* closest = NULL;
-		for (int i = 0; i < enemies.size(); ++i)
+		for (unsigned int i = 0; i < enemies.size(); ++i)
 		if (closest == NULL || Distance(attackingChampion, enemies[i]) <= Distance(attackingChampion, closest))
 			closest = enemies[i];
 		std::vector<Champion*> filtered = std::vector<Champion*>();
@@ -67,7 +69,7 @@ namespace Game
 	std::vector<Champion*> LaneEnemiesFilter::Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
 	{
 		std::vector<Champion*> filtered = std::vector<Champion*>();
-		for (int i = 0; i < enemies.size(); ++i)
+		for (unsigned int i = 0; i < enemies.size(); ++i)
 			if (attackingChampion->GetParameter(ChampionParameters::Lane) == enemies[i]->GetParameter(ChampionParameters::Lane))
 				filtered.push_back(enemies[i]);
 		return EnemiesFilter::Filter(attackingChampion, filtered);
@@ -76,7 +78,7 @@ namespace Game
 	std::vector<Champion*> AliveEnemiesFilter::Filter(Champion* attackingChampion, std::vector<Champion*> enemies)
 	{
 		std::vector<Champion*> filtered = std::vector<Champion*>();
-		for (int i = 0; i < enemies.size(); ++i)
+		for (unsigned int i = 0; i < enemies.size(); ++i)
 			if (enemies[i]->IsAlive())
 				filtered.push_back(enemies[i]);
 		return EnemiesFilter::Filter(attackingChampion, filtered);

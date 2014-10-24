@@ -1,10 +1,41 @@
-﻿  Application.cpp
+﻿  Timer.cpp
+  Team.cpp
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(13) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(17) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(23) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(27) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
           c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(75) : see declaration of 'Game::Champion::GetParameter'
+  IKnightDisplayer.h
+  Main.cpp
+  SingleDataKeeper.cpp
+  Knight.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(23) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(27) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(75) : see declaration of 'Game::Champion::GetParameter'
+  ITimerParam.h
+  GameHolder.cpp
+  EnemiesFilter.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(40): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(46): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Champion.cpp
+  Application.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(23) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(27) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(75) : see declaration of 'Game::Champion::GetParameter'
+  Generating Code...
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(87): warning C4715: 'Game::Champion::Modification' : not all control paths return a value
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(134): warning C4715: 'Game::Champion::GetChangingParameter' : not all control paths return a value
   CP3_Project.vcxproj -> C:\Users\Grzegorz\Dropbox\GitHub\sem3proj\CP3_Project\Debug\CP3_Project.exe

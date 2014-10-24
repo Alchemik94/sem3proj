@@ -68,6 +68,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Champion.cpp" />
     <ClCompile Include="EnemiesFilter.cpp" />
+    <ClCompile Include="GameHolder.cpp" />
     <ClCompile Include="ITimerParam.h" />
     <ClCompile Include="Knight.cpp" />
     <ClCompile Include="SingleDataKeeper.cpp" />

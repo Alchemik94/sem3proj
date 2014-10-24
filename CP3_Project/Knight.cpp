@@ -8,7 +8,7 @@ namespace Game
 {
 	Knight::Knight(ReadyPreset preset) :Champion(preset)
 	{
-		
+	
 	}
 
 	Application::IFilter* Knight::CreateFilter()

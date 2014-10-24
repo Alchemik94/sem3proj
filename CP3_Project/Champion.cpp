@@ -49,8 +49,8 @@ namespace Game
 			_range
 			);
 
-		_attackTimer = Application::Timer((int)(1000 / _attackSpeed), &Game::Champion::AttackCounterResetter,this);
-		_moveHandlerTimer = Application::Timer((int)(1000 / _movementSpeed), &Game::Champion::MoveHandler, this);
+		_attackTimer = Application::Timer((int)(((float)1000) / ((float)_attackSpeed)), &Game::Champion::AttackCounterResetter,this);
+		_moveHandlerTimer = Application::Timer((int)(((float)1000) / ((float)_movementSpeed)), &Game::Champion::MoveHandler, this);
 
 		_attackTimer.Run();
 		_moveHandlerTimer.Run();

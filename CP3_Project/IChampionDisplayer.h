@@ -10,15 +10,13 @@ namespace Display
 	template <class ChampionType>
 	class IChampionDisplayer
 	{
-		protected:
-			IChampionDisplayer(){}
 		public:
 			//Displays attack animation of a champion
-			virtual void DisplayAttack(std::vector<ChampionType*> filteredEnemies) = NULL;
+			virtual void DisplayAttack(std::vector<ChampionType*> filteredEnemies) = 0;
 			//Displays death of a champion
-			virtual void DisplayDeath() = NULL;
+			virtual void DisplayDeath() = 0;
 			//Displays move of a champion
-			virtual void DisplayMove(Game::Direction direction, int change) = NULL;
+			virtual void DisplayMove(Game::Direction direction, int change) = 0;
 
 
 
@@ -51,7 +49,7 @@ namespace Display
 
 
 			//Returns selected champion parameter
-			virtual int GetParameter(Game::ChampionParameters param) = NULL;
+			virtual int GetParameter(Game::ChampionParameters param) = 0;
 	};
 }
 

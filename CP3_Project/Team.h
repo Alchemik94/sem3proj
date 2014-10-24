@@ -16,7 +16,7 @@ namespace Game
 			static void EraseDead(ITimerParameter* parameter);
 		public:
 			Team();
-			~Team();
+			virtual ~Team();
 	};
 
 	class AutogeneratingTeam : public Team, public virtual std::vector<Champion*>

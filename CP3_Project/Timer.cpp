@@ -6,8 +6,7 @@
 
 namespace Application
 {
-	//template <class Function>
-	Timer/*<Function>*/::Timer/*<Function>*/(int msec, Function function, ITimerParameter* parameter)
+	Timer::Timer(int msec, Function function, ITimerParameter* parameter)
 	{
 		_gap = msec;
 		_internalFunction = function;
@@ -15,8 +14,7 @@ namespace Application
 		_running = false;
 	}
 
-	//template <class Function>
-	void Timer/*<Function>*/::Caller(Timer/*<Function>*/* timer)
+	void Timer::Caller(Timer* timer)
 	{
 		while (timer->_running)
 		{
@@ -25,8 +23,7 @@ namespace Application
 		}
 	}
 
-	//template <class Function>
-	void Timer/*<Function>*/::Run()
+	void Timer::Run()
 	{
 		//avoids to loose the handle to thread and memory leakage
 		if (_running) return;
@@ -35,8 +32,7 @@ namespace Application
 		_functionRunner = new std::thread(Caller,this);
 	}
 
-	//template <class Function>
-	void Timer/*<Function>*/::Stop()
+	void Timer::Stop()
 	{
 		//avoids access violations
 		if (_running == false) return;
@@ -46,8 +42,7 @@ namespace Application
 		delete _functionRunner;
 	}
 
-	//template <class Function>
-	Timer/*<Function>*/::~Timer/*<Function>*/()
+	Timer::~Timer()
 	{
 		Stop();
 	}

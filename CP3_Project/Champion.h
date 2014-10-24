@@ -61,12 +61,12 @@ namespace Game
 			static std::pair<ChampionParameters, TypeOfChange> DirectionToParams(Direction direction);
 		protected:
 			//abstract one, which will be defined for every derived class
-			virtual Application::IFilter* CreateFilter() = NULL;
+			virtual Application::IFilter* CreateFilter() = 0;
 
 			//Parametrized constructor allowing to create champion from ready preset.
 			Champion(ReadyPreset preset);
 		public:
-			~Champion();
+			virtual ~Champion();
 //TODO
 			//need to be reworked
 			virtual void Attack(std::vector<Champion*> enemies);

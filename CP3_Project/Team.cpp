@@ -19,7 +19,7 @@ namespace Game
 			Team newTeam;
 			static_cast<std::vector<Champion*> >(newTeam) = filter->Filter(NULL, (*team));
 			
-			for (int i = 0, j = 0; i < team->size() && j < newTeam.size(); ++i)
+			for (unsigned int i = 0, j = 0; i < team->size() && j < newTeam.size(); ++i)
 			{
 				if ((*team)[i] == newTeam[j])
 					++j;

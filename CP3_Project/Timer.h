@@ -26,7 +26,7 @@ namespace Application
 			void Run();
 			//Stops timer.
 			void Stop();
-			~Timer/*<Function>*/();
+			virtual ~Timer/*<Function>*/();
 	};
 }
 
