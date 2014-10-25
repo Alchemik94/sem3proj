@@ -7,12 +7,11 @@
 namespace Display
 {
 	//Interface to define graphics. ChampionType has to implement IChampionDisplayer.
-	template <class ChampionType>
 	class IChampionDisplayer
 	{
 		public:
 			//Displays attack animation of a champion
-			virtual void DisplayAttack(std::vector<ChampionType*> filteredEnemies) = 0;
+			virtual void DisplayAttack(std::vector<IChampionDisplayer*> filteredEnemies) = 0;
 			//Displays death of a champion
 			virtual void DisplayDeath() = 0;
 			//Displays move of a champion

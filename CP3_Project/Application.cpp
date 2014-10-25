@@ -8,6 +8,7 @@
 	#include "Team.h"
 	#include "Knight.h"
 	#include <iostream>
+	#include <Windows.h>
 #endif
 
 namespace Application
@@ -35,6 +36,9 @@ namespace Application
 		t->push_back(new Game::Knight(Game::ReadyPreset::PlayerKnight));
 		for (unsigned int i = 0; i < t->size(); ++i)
 			(*t)[i]->Attack(*(static_cast<std::vector<Game::Champion*>*>(at)));
+		Sleep(11);
+		delete t;
+		delete at;
 	}
 }
 

@@ -7,7 +7,6 @@
 
 namespace Application
 {
-	//template <class Function>
 	class Timer
 	{
 		private:
@@ -21,12 +20,12 @@ namespace Application
 			static void Caller(Timer* timer);
 		public:
 			//Standard constructor. Defines the time timer runs in miliseconds before using the function passed as second argument.
-			Timer/*<Function>*/(int msec, Function function, ITimerParameter* parameter);
+			Timer(int msec, Function function, ITimerParameter* parameter);
 			//Starts timer to perform its work.
 			void Run();
 			//Stops timer.
 			void Stop();
-			virtual ~Timer/*<Function>*/();
+			virtual ~Timer();
 	};
 }
 

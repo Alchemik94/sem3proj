@@ -5,6 +5,7 @@
 #include "EnemiesFilter.h"
 #include "SingleDataKeeper.h"
 #include "Application.h"
+#include "Reinterpreter.h"
 
 #include <cstdio>
 #include <string>
@@ -197,10 +198,12 @@ namespace Game
 
 		delete filter;
 
+		Application::VectorReinterpreter<Champion, Display::IChampionDisplayer> reinterpreter;
+
 		if (filteredEnemies.size() > 0)
 		{
 			LOCK_APPLICATION_VARIABLES;
-			DisplayAttack(filteredEnemies);
+			DisplayAttack(reinterpreter.Convert(filteredEnemies));
 			UNLOCK_APPLICATION_VARIABLES;
 		}
 

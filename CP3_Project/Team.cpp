@@ -7,17 +7,20 @@
 #include <vector>
 #include "ChampionFactory.h"
 #include "SingleDataKeeper.h"
+#include "Application.h"
 
 namespace Game
 {
 	void Team::EraseDead(ITimerParameter* param)
 	{
+		LOCK_APPLICATION_VARIABLES;
 		Team* team = static_cast<Team*>(param);
+		team->_erasing = true;
 		if (team->size() > 0)
 		{
 			EnemiesFilter* filter = new AliveEnemiesFilter();
-			Team newTeam;
-			static_cast<std::vector<Champion*> >(newTeam) = filter->Filter(NULL, (*team));
+			std::vector<Champion*> newTeam;
+			newTeam = filter->Filter(NULL, (*team));
 			
 			for (unsigned int i = 0, j = 0; i < team->size() && j < newTeam.size(); ++i)
 			{
@@ -29,6 +32,8 @@ namespace Game
 
 			*team = newTeam;
 		}
+		team->_erasing = false;
+		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 	Team::Team() :_timer(Application::SingleDataKeeper::Instance()->GetInt("deadChampionsEraserDelay"), EraseDead, this)
@@ -36,9 +41,17 @@ namespace Game
 		_timer.Run();
 	}
 
+	Team::Team(std::vector<Champion*> team) : std::vector<Champion*>(team), _timer(Application::SingleDataKeeper::Instance()->GetInt("deadChampionsEraserDelay"), EraseDead, this)
+	{
+		_timer.Run();
+	}
+
 	Team::~Team()
 	{
 		_timer.Stop();
+		if (!_erasing)
+			for (int i = 0; i < this->size(); ++i)
+				delete (*this)[i];
 	}
 
 //TODO - for example choosing random presets from the list of them

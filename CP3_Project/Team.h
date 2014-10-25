@@ -14,8 +14,10 @@ namespace Game
 		private:
 			Application::Timer _timer;
 			static void EraseDead(ITimerParameter* parameter);
+			bool _erasing;
 		public:
 			Team();
+			Team(std::vector<Champion*> team);
 			virtual ~Team();
 	};
 

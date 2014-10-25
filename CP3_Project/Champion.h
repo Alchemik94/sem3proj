@@ -11,7 +11,7 @@
 
 namespace Game
 {
-	class Champion: Application::ITimerParameter, protected virtual Display::IChampionDisplayer<Champion>
+	class Champion: Application::ITimerParameter, protected virtual Display::IChampionDisplayer
 	{
 		private:
 			int _currentHealth,

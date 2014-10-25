@@ -4,16 +4,24 @@
 #include "IChampionDisplayer.h"
 #include "Champion.h"
 #include "GameEnums.h"
+#include "Reinterpreter.h"
 
 namespace Display
 {
-	class IKnightDisplayer : public virtual IChampionDisplayer<Game::Champion>
+	class IKnightDisplayer : public virtual IChampionDisplayer
 	{
 		public:
 			virtual void DisplayAttack(std::vector<Game::Champion*> filteredEnemies)
 			{
 				//TODO
 			}
+
+			virtual void DisplayAttack(std::vector<IChampionDisplayer*> filteredEnemies)
+			{
+				Application::VectorReinterpreter<IChampionDisplayer, Game::Champion> reinterpreter;
+				DisplayAttack(reinterpreter.Convert(filteredEnemies));
+			}
+
 			virtual void DisplayDeath()
 			{
 				//TODO

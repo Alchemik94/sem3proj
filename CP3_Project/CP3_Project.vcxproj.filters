@@ -110,5 +110,8 @@
     <ClInclude Include="IChampionDisplayer.h">
       <Filter>Header Files\Display</Filter>
     </ClInclude>
+    <ClInclude Include="Reinterpreter.h">
+      <Filter>Header Files\Application</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

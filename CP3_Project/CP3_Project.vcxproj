@@ -88,6 +88,7 @@
     <ClInclude Include="GameEnums.h" />
     <ClInclude Include="IChampionDisplayer.h" />
     <ClInclude Include="Knight.h" />
+    <ClInclude Include="Reinterpreter.h" />
     <ClInclude Include="SingleDataKeeper.h" />
     <ClInclude Include="Team.h" />
     <ClInclude Include="Timer.h" />
