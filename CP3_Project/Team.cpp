@@ -13,8 +13,9 @@ namespace Game
 {
 	void Team::EraseDead(ITimerParameter* param)
 	{
-		LOCK_APPLICATION_VARIABLES;
 		Team* team = static_cast<Team*>(param);
+		if (team->_faulty) return;
+		LOCK_APPLICATION_VARIABLES(team->_timer);
 		team->_erasing = true;
 		if (team->size() > 0)
 		{
@@ -22,26 +23,29 @@ namespace Game
 			std::vector<Champion*> newTeam;
 			newTeam = filter->Filter(NULL, (*team));
 			
-			for (unsigned int i = 0, j = 0; i < team->size() && j < newTeam.size(); ++i)
+			if (newTeam.size() != team->size())
 			{
-				if ((*team)[i] == newTeam[j])
-					++j;
-				else
-					delete (*team)[i];
-			}
+				for (unsigned int i = 0, j = 0; i < team->size(); ++i)
+				{
+					if (j<newTeam.size() && (*team)[i] == newTeam[j])
+						++j;
+					else
+						delete (*team)[i];
+				}
 
-			*team = newTeam;
+				*team = newTeam;
+			}
 		}
 		team->_erasing = false;
 		UNLOCK_APPLICATION_VARIABLES;
 	}
 
-	Team::Team() :_timer(Application::SingleDataKeeper::Instance()->GetInt("deadChampionsEraserDelay"), EraseDead, this)
+	Team::Team() :_faulty(false), _timer(Application::SingleDataKeeper::Instance()->GetInt("deadChampionsEraserDelay"), EraseDead, this)
 	{
 		_timer.Run();
 	}
 
-	Team::Team(std::vector<Champion*> team) : std::vector<Champion*>(team), _timer(Application::SingleDataKeeper::Instance()->GetInt("deadChampionsEraserDelay"), EraseDead, this)
+	Team::Team(std::vector<Champion*> team) :_faulty(false), std::vector<Champion*>(team), _timer(Application::SingleDataKeeper::Instance()->GetInt("deadChampionsEraserDelay"), EraseDead, this)
 	{
 		_timer.Run();
 	}
@@ -49,9 +53,14 @@ namespace Game
 	Team::~Team()
 	{
 		_timer.Stop();
+		_faulty = true;
 		if (!_erasing)
+		{
+			LOCK_APPLICATION_VARIABLES(Application::EmptyTimer::Instance());
 			for (int i = 0; i < this->size(); ++i)
 				delete (*this)[i];
+			UNLOCK_APPLICATION_VARIABLES;
+		}
 	}
 
 //TODO - for example choosing random presets from the list of them

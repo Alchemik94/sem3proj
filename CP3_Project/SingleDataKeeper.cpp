@@ -3,6 +3,7 @@
 
 #include "SingleDataKeeper.h"
 #include "Application.h"
+#include "Timer.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ namespace Application
 	{
 		if (!_initialized)
 		{
-			LOCK_APPLICATION_VARIABLES;
+			LOCK_APPLICATION_VARIABLES(EmptyTimer::Instance()) NULL;
 			if (!_initialized)
 			{
 				_initialized = true;

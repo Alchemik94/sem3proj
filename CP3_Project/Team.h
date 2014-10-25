@@ -15,13 +15,14 @@ namespace Game
 			Application::Timer _timer;
 			static void EraseDead(ITimerParameter* parameter);
 			bool _erasing;
+			bool _faulty;
 		public:
 			Team();
 			Team(std::vector<Champion*> team);
-			virtual ~Team();
+			~Team();
 	};
 
-	class AutogeneratingTeam : public Team, public virtual std::vector<Champion*>
+	class AutogeneratingTeam : public virtual Team, public virtual std::vector<Champion*>
 	{
 		public:
 			AutogeneratingTeam(int size, ReadyPreset preset);

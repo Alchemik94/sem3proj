@@ -7,7 +7,7 @@
 //#define LOCK_VERSION_ONE
 
 #ifndef LOCK_VERSION_ONE
-#define LOCK_APPLICATION_VARIABLES while (Application::MainApplication::Lock.test_and_set())
+#define LOCK_APPLICATION_VARIABLES(TIMER_USED) while (Application::MainApplication::Lock.test_and_set()) if((TIMER_USED).Active() == false) return
 #define UNLOCK_APPLICATION_VARIABLES Application::MainApplication::Lock.clear()
 #else
 #define LOCK_APPLICATION_VARIABLES while (Application::MainApplication::Lock); Application::MainApplication::Lock = true

@@ -18,7 +18,8 @@ namespace Application
 	{
 		while (timer->_running)
 		{
-			Sleep(timer->_gap);
+			//Sleep(timer->_gap);
+			std::this_thread::sleep_for(std::chrono::milliseconds(timer->_gap));
 			timer->_internalFunction(timer->_parameter);
 		}
 	}
@@ -38,14 +39,17 @@ namespace Application
 		if (_running == false) return;
 		
 		_running = false;
+		if (_functionRunner->joinable())
 		_functionRunner->join();
-		delete _functionRunner;
+//		delete _functionRunner;
 	}
 
 	Timer::~Timer()
 	{
 		Stop();
 	}
+
+	EmptyTimer* EmptyTimer::_instance;
 }
 
 #endif
