@@ -12,8 +12,16 @@ namespace Game
 		private:
 			Team* _team1;
 			Team* _team2;
+			int _roundsNumber;
+			int _currentRound;
 		public:
 			GameHolder();
+			GameHolder(int numberOfRounds);
+			virtual ~GameHolder();
+			virtual void NewRound(int numberOfEnemies);
+			int RoundsNumber();
+			int CurrentRound();
+			
 	};
 }
 
