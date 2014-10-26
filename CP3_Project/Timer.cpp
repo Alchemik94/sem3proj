@@ -41,6 +41,7 @@ namespace Application
 		_running = false;
 		if (_functionRunner->joinable())
 		_functionRunner->join();
+		_functionRunner = NULL;
 //		delete _functionRunner;
 	}
 

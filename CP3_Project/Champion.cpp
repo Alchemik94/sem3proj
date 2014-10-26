@@ -68,8 +68,8 @@ namespace Game
 	{
 		_attackTimer.Stop();
 		_moveHandlerTimer.Stop();
-		while (_wait);
-		while (_wait);
+		while (_wait) std::this_thread::yield();
+		while (_wait) std::this_thread::yield();
 	}
 
 	int Champion::Modification(TypeOfChange type, int change)

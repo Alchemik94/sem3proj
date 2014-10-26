@@ -57,8 +57,14 @@ namespace Game
 		if (!_erasing)
 		{
 			LOCK_APPLICATION_VARIABLES(Application::EmptyTimer::Instance());
-			for (int i = 0; i < this->size(); ++i)
-				delete (*this)[i];
+			if (!_erasing)
+			{
+				for (int i = 0; i < this->size(); ++i)
+				{
+					delete (*this)[i];
+					(*this)[i] = NULL;
+				}
+			}
 			UNLOCK_APPLICATION_VARIABLES;
 		}
 	}

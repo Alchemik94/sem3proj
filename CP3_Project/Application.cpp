@@ -36,16 +36,16 @@ namespace Application
 		t->push_back(new Game::Knight(Game::ReadyPreset::PlayerKnight));
 		for (unsigned int i = 0; i < t->size(); ++i)
 			(*t)[i]->Attack(*(static_cast<std::vector<Game::Champion*>*>(at)));
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		//Sleep(100);
 		delete t;
 		t = NULL;
 		//Sleep(100);
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		delete at;
 		at = NULL;
 		//Sleep(100);
-		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 }
 

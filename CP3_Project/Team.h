@@ -9,7 +9,7 @@
 
 namespace Game
 {
-	class Team: public virtual std::vector<Champion*>, public Application::ITimerParameter
+	class Team: public std::vector<Champion*>, public Application::ITimerParameter
 	{
 		private:
 			Application::Timer _timer;
@@ -22,7 +22,7 @@ namespace Game
 			~Team();
 	};
 
-	class AutogeneratingTeam : public virtual Team, public virtual std::vector<Champion*>
+	class AutogeneratingTeam : public Team
 	{
 		public:
 			AutogeneratingTeam(int size, ReadyPreset preset);
