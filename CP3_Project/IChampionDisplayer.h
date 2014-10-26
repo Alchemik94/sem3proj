@@ -12,7 +12,7 @@ namespace Display
 		public:
 			//Displays attack animation of a champion
 			virtual void DisplayAttack(std::vector<IChampionDisplayer*> filteredEnemies) = 0;
-			//Displays death of a champion
+			//Displays death of a champion and deletes him from map
 			virtual void DisplayDeath() = 0;
 			//Displays move of a champion
 			virtual void DisplayMove(Game::Direction direction, int change) = 0;

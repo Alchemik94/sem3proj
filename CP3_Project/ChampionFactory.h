@@ -12,11 +12,7 @@ namespace Game
 		private:
 			ChampionFactory(){}
 		public:
-			static Champion* CreateChampion(ReadyPreset preset)
-			{
-//TODO
-				return new Knight(preset);
-			}
+			static Champion* CreateChampion(ReadyPreset preset);
 	};
 }
 

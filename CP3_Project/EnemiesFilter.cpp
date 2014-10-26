@@ -12,6 +12,11 @@ namespace Game
 		next = NULL;
 	}
 
+	EnemiesFilter::~EnemiesFilter()
+	{
+		delete next;
+	}
+
 	EnemiesFilter* EnemiesFilter::Append(EnemiesFilter* filter)
 	{
 		if (next == NULL)

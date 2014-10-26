@@ -16,10 +16,7 @@ namespace Game
 			EnemiesFilter* Append(EnemiesFilter* filter);
 			//Filters enemies with respect to current filter type
 			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
-			virtual ~EnemiesFilter()
-			{
-				delete next;
-			}
+			virtual ~EnemiesFilter();
 	};
 
 	class DistanceEnemiesFilter : public EnemiesFilter

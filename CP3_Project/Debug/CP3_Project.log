@@ -1,26 +1,4 @@
-﻿  Application.cpp
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(25) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(29) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(75) : see declaration of 'Game::Champion::GetParameter'
-c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warning C4018: '<' : signed/unsigned mismatch
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(13) : while compiling class template member function 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)'
-          with
-          [
-              _Ty=Game::Champion *
-          ]
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(22) : see reference to function template instantiation 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)' being compiled
-          with
-          [
-              _Ty=Game::Champion *
-          ]
-          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see reference to class template instantiation 'Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>' being compiled
-  Generating Code...
-  Compiling...
+﻿  Timer.cpp
   Team.cpp
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
           c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
@@ -43,7 +21,105 @@ c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warni
               _Ty=Game::Champion *
           ]
           c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see reference to class template instantiation 'Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>' being compiled
-  Generating Code...
-  Skipping... (no relevant changes detected)
+  IKnightDisplayer.h
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(13) : while compiling class template member function 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)'
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(22) : see reference to function template instantiation 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)' being compiled
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see reference to class template instantiation 'Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>' being compiled
+  Main.cpp
+  SingleDataKeeper.cpp
+  Knight.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(25) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(29) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(75) : see declaration of 'Game::Champion::GetParameter'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(13) : while compiling class template member function 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)'
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(22) : see reference to function template instantiation 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)' being compiled
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see reference to class template instantiation 'Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>' being compiled
   ITimerParam.h
+  GameHolder.cpp
+  EnemiesFilter.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(45): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(51): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ChampionFactory.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(25) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(29) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(75) : see declaration of 'Game::Champion::GetParameter'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(13) : while compiling class template member function 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)'
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(22) : see reference to function template instantiation 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)' being compiled
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see reference to class template instantiation 'Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>' being compiled
+  Champion.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(13) : while compiling class template member function 'std::vector<Display::IChampionDisplayer *,std::allocator<_Ty>> Application::VectorReinterpreter<Game::Champion,Display::IChampionDisplayer>::Convert(std::vector<Game::Champion *,std::allocator<Game::Champion>>)'
+          with
+          [
+              _Ty=Display::IChampionDisplayer *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(210) : see reference to function template instantiation 'std::vector<Display::IChampionDisplayer *,std::allocator<_Ty>> Application::VectorReinterpreter<Game::Champion,Display::IChampionDisplayer>::Convert(std::vector<Game::Champion *,std::allocator<Game::Champion>>)' being compiled
+          with
+          [
+              _Ty=Display::IChampionDisplayer *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(205) : see reference to class template instantiation 'Application::VectorReinterpreter<Game::Champion,Display::IChampionDisplayer>' being compiled
+  Application.cpp
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayAttack' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(19) : see declaration of 'Display::IKnightDisplayer::DisplayAttack'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayDeath' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(25) : see declaration of 'Display::IKnightDisplayer::DisplayDeath'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Display::IKnightDisplayer::Display::IKnightDisplayer::DisplayMove' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(29) : see declaration of 'Display::IKnightDisplayer::DisplayMove'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\knight.h(16): warning C4250: 'Game::Knight' : inherits 'Game::Champion::Game::Champion::GetParameter' via dominance
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.h(75) : see declaration of 'Game::Champion::GetParameter'
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warning C4018: '<' : signed/unsigned mismatch
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(13) : while compiling class template member function 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)'
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(22) : see reference to function template instantiation 'std::vector<Game::Champion *,std::allocator<_Ty>> Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>::Convert(std::vector<Display::IChampionDisplayer *,std::allocator<Display::IChampionDisplayer>>)' being compiled
+          with
+          [
+              _Ty=Game::Champion *
+          ]
+          c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see reference to class template instantiation 'Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>' being compiled
+  Generating Code...
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(90): warning C4715: 'Game::Champion::Modification' : not all control paths return a value
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\champion.cpp(137): warning C4715: 'Game::Champion::GetChangingParameter' : not all control paths return a value
+c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\championfactory.cpp(19): warning C4715: 'Game::ChampionFactory::CreateChampion' : not all control paths return a value
+cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   CP3_Project.vcxproj -> C:\Users\Grzegorz\Dropbox\GitHub\sem3proj\CP3_Project\Debug\CP3_Project.exe

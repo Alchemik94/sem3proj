@@ -67,6 +67,7 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Champion.cpp" />
+    <ClCompile Include="ChampionFactory.cpp" />
     <ClCompile Include="EnemiesFilter.cpp" />
     <ClCompile Include="GameHolder.cpp" />
     <ClCompile Include="ITimerParam.h" />
