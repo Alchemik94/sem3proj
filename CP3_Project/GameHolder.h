@@ -1,13 +1,14 @@
 #ifndef _GAMEHOLDER_DECLARATION
 #define _GAMEHOLDER_DECLARATION
 
+#include "IGameDisplayer.h"
 #include "Champion.h"
 #include <vector>
 #include "Team.h"
 
 namespace Game
 {
-	class GameHolder
+	class GameHolder: protected Display::IGameDisplayer
 	{
 		private:
 			Team* _team1;

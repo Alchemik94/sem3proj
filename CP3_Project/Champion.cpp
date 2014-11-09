@@ -192,7 +192,7 @@ namespace Game
 		}
 	}
 
-	void Champion::Attack(std::vector<Champion*> enemies)
+	void Champion::Attack(std::vector<Champion*>* enemies)
 	{
 		while (_afterAttack) std::this_thread::yield();
 

@@ -8,10 +8,9 @@ namespace Game
 {
 	class Knight :protected Display::IKnightDisplayer, public Champion
 	{
-		protected:
+		public:
 			//Knight attacks all enemies in range on his lane.
 			virtual Application::IFilter* CreateFilter();
-		public:
 			Knight(ReadyPreset preset);
 	};
 }

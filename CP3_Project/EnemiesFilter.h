@@ -15,7 +15,7 @@ namespace Game
 			//Adds next filter to the chain
 			EnemiesFilter* Append(EnemiesFilter* filter);
 			//Filters enemies with respect to current filter type
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*>* enemies);
 			virtual ~EnemiesFilter();
 	};
 
@@ -24,25 +24,25 @@ namespace Game
 		protected:
 			virtual int Distance(Champion* first, Champion* second);
 		public:
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*>* enemies);
 	};
 
 	class ClosestOneEnemiesFilter : public DistanceEnemiesFilter
 	{
 		public:
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*>* enemies);
 	};
 
 	class LaneEnemiesFilter : public EnemiesFilter
 	{
 		public:
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*>* enemies);
 	};
 
 	class AliveEnemiesFilter: public EnemiesFilter
 	{
 		public:
-			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*> enemies);
+			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*>* enemies);
 	};
 }
 

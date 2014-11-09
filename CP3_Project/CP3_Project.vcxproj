@@ -38,17 +38,24 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(VCInstallDir)UnitTest\include;$(IncludePath);</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(VCInstallDir)UnitTest\lib;$(LibraryPath);</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_MBCS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -68,13 +75,20 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Champion.cpp" />
     <ClCompile Include="ChampionFactory.cpp" />
+    <ClCompile Include="ComputerChampionController.cpp" />
     <ClCompile Include="EnemiesFilter.cpp" />
     <ClCompile Include="GameHolder.cpp" />
     <ClCompile Include="ITimerParam.h" />
     <ClCompile Include="Knight.cpp" />
+    <ClInclude Include="Algorithms.h" />
+    <ClInclude Include="PlayerChampionController.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClCompile Include="PlayerChampionController.cpp" />
     <ClCompile Include="SingleDataKeeper.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="IKnightDisplayer.h" />
+    <ClCompile Include="ChampionController.cpp" />
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
@@ -82,12 +96,15 @@
     <ClInclude Include="ActionQueue.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Champion.h" />
+    <ClInclude Include="ChampionController.h" />
     <ClInclude Include="ChampionFactory.h" />
+    <ClInclude Include="ComputerChampionController.h" />
     <ClInclude Include="EnemiesFilter.h" />
     <ClInclude Include="GameHolder.h" />
     <ClInclude Include="IFilter.h" />
     <ClInclude Include="GameEnums.h" />
     <ClInclude Include="IChampionDisplayer.h" />
+    <ClInclude Include="IGameDisplayer.h" />
     <ClInclude Include="Knight.h" />
     <ClInclude Include="Reinterpreter.h" />
     <ClInclude Include="SingleDataKeeper.h" />
