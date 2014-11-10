@@ -79,8 +79,10 @@
     <ClCompile Include="EnemiesFilter.cpp" />
     <ClCompile Include="GameHolder.cpp" />
     <ClCompile Include="ITimerParam.h" />
+    <ClCompile Include="KeyCatcher.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClInclude Include="Algorithms.h" />
+    <ClInclude Include="KeyCatcher.h" />
     <ClInclude Include="PlayerChampionController.h">
       <FileType>CppCode</FileType>
     </ClInclude>

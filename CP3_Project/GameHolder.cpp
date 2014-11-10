@@ -11,6 +11,7 @@ namespace Game
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
 		_roundsNumber = 1;
 		_currentRound = 0;
+		_keyCatcher = this;
 	}
 
 	GameHolder::GameHolder(int numberOfRounds)
@@ -19,6 +20,7 @@ namespace Game
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
 		_roundsNumber = numberOfRounds;
 		_currentRound = 0;
+		_keyCatcher = this;
 	}
 
 	GameHolder::~GameHolder()
@@ -37,6 +39,7 @@ namespace Game
 		if (_currentRound++ >= _roundsNumber) return; //throw an error
 		while (_team2->size() > 0) std::this_thread::yield();
 		delete _team2;
+		IGameDisplayer::NewRound();
 		_team2 = new AutogeneratingTeam(numberOfEnemies,AIKnight);
 	}
 
