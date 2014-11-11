@@ -15,12 +15,12 @@ namespace Application
 		return this;
 	}
 
-	void KeyCatcher::Catched(int primaryCode, int secondaryCode = -1)
+	void KeyCatcher::Catched(Keys key)
 	{
 		if (_next != nullptr)
-			_next->Catched(primaryCode, secondaryCode);
+			_next->Catched(key);
 		else
-			CatchedKeyHandler(primaryCode, secondaryCode);
+			CatchedKeyHandler(key);
 	}
 	
 	void KeyCatcher::GiveControl(KeyCatcher* catcher)

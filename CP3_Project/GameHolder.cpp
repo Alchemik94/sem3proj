@@ -12,6 +12,7 @@ namespace Game
 		_roundsNumber = 1;
 		_currentRound = 0;
 		_keyCatcher = this;
+		_paused = true;
 	}
 
 	GameHolder::GameHolder(int numberOfRounds)
@@ -21,6 +22,7 @@ namespace Game
 		_roundsNumber = numberOfRounds;
 		_currentRound = 0;
 		_keyCatcher = this;
+		_paused = true;
 	}
 
 	GameHolder::~GameHolder()
@@ -51,6 +53,18 @@ namespace Game
 	int GameHolder::RoundsNumber()
 	{
 		return _roundsNumber;
+	}
+
+//TODO
+	void GameHolder::Pause()
+	{
+		_paused = true;
+	}
+
+//TODO
+	void GameHolder::Unpause()
+	{
+		_paused = false;
 	}
 }
 

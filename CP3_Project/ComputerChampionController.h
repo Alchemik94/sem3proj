@@ -18,7 +18,7 @@ namespace Game
 			unsigned int LowestSensiblePauseTime(Champion* champion);
 			static void TakeTheAction(Application::ITimerParameter* param);
 		public:
-			ComputerChampionController(Champion* controlledChampion, Team* enemyTeam);
+			ComputerChampionController(Champion* controlledChampion, volatile bool* paused, Team* enemyTeam);
 			virtual void Start();
 			virtual void Stop();
 			virtual ~ComputerChampionController();

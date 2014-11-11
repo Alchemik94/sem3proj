@@ -152,5 +152,8 @@
     <ClInclude Include="KeyCatcher.h">
       <Filter>Header Files\Application</Filter>
     </ClInclude>
+    <ClInclude Include="KeyboardKeysEnum.h">
+      <Filter>Header Files\Application</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

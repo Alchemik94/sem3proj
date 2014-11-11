@@ -19,11 +19,14 @@ namespace Game
 			int _roundsNumber;
 			int _currentRound;
 			Application::KeyCatcher* _keyCatcher;
+			volatile bool _paused;
 			//probably the only solution for now
 			//main thread will catch keys
 			//rounds will be run in this function by timer or another thread
 			//(thread maybe?)
 			//static void RoundRunner(Application::ITimerParameter* param);
+			void Pause();
+			void Unpause();
 		public:
 			GameHolder();
 			GameHolder(int numberOfRounds);

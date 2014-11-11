@@ -82,6 +82,7 @@
     <ClCompile Include="KeyCatcher.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClInclude Include="Algorithms.h" />
+    <ClInclude Include="KeyboardKeysEnum.h" />
     <ClInclude Include="KeyCatcher.h" />
     <ClInclude Include="PlayerChampionController.h">
       <FileType>CppCode</FileType>

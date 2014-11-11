@@ -5,7 +5,7 @@
 
 namespace Game
 {
-	ComputerChampionController::ComputerChampionController(Champion* controlledChampion, Team* enemyTeam) : ChampionController(controlledChampion)
+	ComputerChampionController::ComputerChampionController(Champion* controlledChampion, volatile bool* paused, Team* enemyTeam) : ChampionController(controlledChampion, paused)
 	{
 		_enemyTeam = enemyTeam;
 		_filter = controlledChampion->CreateFilter();
@@ -46,6 +46,8 @@ namespace Game
 	void ComputerChampionController::TakeTheAction(Application::ITimerParameter* parameter)
 	{
 		ComputerChampionController* controller = static_cast<ComputerChampionController*>(parameter);
+		if (*controller->_paused == true)
+			return;
 		EnemiesFilter* filter = static_cast<EnemiesFilter*>(controller->_filter);
 		if (filter->Filter(controller->_controlledChampion, controller->_enemyTeam).size() > 0)
 			controller->_controlledChampion->Attack(controller->_enemyTeam);

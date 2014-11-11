@@ -4,6 +4,7 @@
 #include <unordered_map>
 #include <string>
 #include "GameEnums.h"
+#include "KeyboardKeysEnum.h"
 
 namespace Application
 {
@@ -13,8 +14,16 @@ namespace Application
 			//singleton structure
 			SingleDataKeeper()
 			{
+				//Some constants used in program
 				KeepInt("distanceBetweenLanes", 20);
 				KeepInt("deadChampionsEraserDelay", 10);
+				//Key bindings
+				KeepInt("UpKey",Keys::Up);
+				KeepInt("DownKey",Keys::Down);
+				KeepInt("LeftKey",Keys::Left);
+				KeepInt("RightKey",Keys::Right);
+				KeepInt("AttackKey",Keys::Space);
+				KeepInt("PauseKey",Keys::Escape);
 				//To change
 				SavePreset(Game::ReadyPreset::AIKnight, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 				SavePreset(Game::ReadyPreset::PlayerKnight, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
@@ -28,19 +37,19 @@ namespace Application
 			void InitializeComponent();
 		public:
 			//Gives access to single instance in whole program
-			static SingleDataKeeper* Instance();
+			const static SingleDataKeeper* Instance();
 			//Keeps string value under specified name
 			void KeepString(std::string name, std::string value);
 			//Keeps int value under specified name
 			void KeepInt(std::string name, int value);
 			//Gets string value from specified name
-			std::string GetString(std::string name);
+			const std::string GetString(std::string name) const;
 			//Gets int value from specified name
-			int GetInt(std::string name);
+			const int GetInt(std::string name) const;
 			//Checks if specified name of string exists
-			bool ContainsString(std::string name);
+			const bool ContainsString(std::string name) const;
 			//Checks if specified name of int exists
-			bool ContainsInt(std::string name);
+			const bool ContainsInt(std::string name) const;
 
 			//Facade for saving presets
 			void SavePreset(
@@ -59,7 +68,7 @@ namespace Application
 				int range
 				);
 			//Facade for loading presents
-			void LoadPreset(
+			const void LoadPreset(
 				Game::ReadyPreset preset,
 				int& attackSpeed,
 				int& basicDamage,
@@ -73,7 +82,7 @@ namespace Application
 				int& maximumPower,
 				int& movementSpeed,
 				int& range
-				);
+				) const;
 	};
 }
 

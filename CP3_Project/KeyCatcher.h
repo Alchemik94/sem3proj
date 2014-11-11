@@ -1,5 +1,7 @@
 #pragma once
 
+#include "KeyboardKeysEnum.h"
+
 namespace Application
 {
 	class KeyCatcher
@@ -7,10 +9,10 @@ namespace Application
 		private:
 			KeyCatcher* _next;
 		protected:
-			virtual void CatchedKeyHandler(int primaryCode, int secondaryCode) = 0;
+			virtual void CatchedKeyHandler(Keys key) = 0;
 		public:
 			KeyCatcher();
-			void Catched(int primaryCode, int secondaryCode = -1);
+			void Catched(Keys key);
 			KeyCatcher* ReturnControl();
 			void GiveControl(KeyCatcher* catcher);
 	};

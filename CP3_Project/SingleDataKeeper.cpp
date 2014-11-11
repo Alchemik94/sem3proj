@@ -12,12 +12,12 @@ namespace Application
 	bool SingleDataKeeper::_initialized;
 	SingleDataKeeper* SingleDataKeeper::_instance;
 
-	SingleDataKeeper::~SingleDataKeeper()
+	inline SingleDataKeeper::~SingleDataKeeper()
 	{
 		delete _instance;
 	}
 
-	SingleDataKeeper* SingleDataKeeper::Instance()
+	const SingleDataKeeper* SingleDataKeeper::Instance()
 	{
 		if (!_initialized)
 		{
@@ -32,36 +32,32 @@ namespace Application
 		return _instance;
 	}
 
-	bool SingleDataKeeper::ContainsString(string name)
+	inline const bool SingleDataKeeper::ContainsString(string name) const
 	{
 		return _stringDictionary.count(name)>0;
 	}
 
-	bool SingleDataKeeper::ContainsInt(string name)
+	inline const bool SingleDataKeeper::ContainsInt(string name) const
 	{
 		return _intDictionary.count(name)>0;
 	}
 
-	void SingleDataKeeper::KeepString(string name, string value)
+	inline void SingleDataKeeper::KeepString(string name, string value)
 	{
-//		LOCK_APPLICATION_VARIABLES;
 		_stringDictionary.emplace(name, value);
-//		UNLOCK_APPLICATION_VARIABLES;
 	}
 
-	void SingleDataKeeper::KeepInt(string name, int value)
+	inline void SingleDataKeeper::KeepInt(string name, int value)
 	{
-//		LOCK_APPLICATION_VARIABLES;
 		_intDictionary.emplace(name, value);
-//		UNLOCK_APPLICATION_VARIABLES;
 	}
 
-	string SingleDataKeeper::GetString(string name)
+	inline const string SingleDataKeeper::GetString(string name) const
 	{
 		return _stringDictionary[name];
 	}
 	
-	int SingleDataKeeper::GetInt(string name)
+	inline const int SingleDataKeeper::GetInt(string name) const
 	{
 		return _intDictionary[name];
 	}
@@ -86,7 +82,7 @@ namespace Application
 		KeepInt(name + "Range", range);
 	}
 
-	void SingleDataKeeper::LoadPreset(Game::ReadyPreset preset, int& attackSpeed, int& basicDamage, int& currentHealth, int& currentPower, int& distanceFromCastle, int& experience, int& lane, int& level, int& maximumHealth, int& maximumPower, int& movementSpeed, int& range)
+	const void SingleDataKeeper::LoadPreset(Game::ReadyPreset preset, int& attackSpeed, int& basicDamage, int& currentHealth, int& currentPower, int& distanceFromCastle, int& experience, int& lane, int& level, int& maximumHealth, int& maximumPower, int& movementSpeed, int& range) const
 	{
 		std::string name;
 		char* tmp = new char[20];
