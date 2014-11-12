@@ -5,6 +5,7 @@
 #include <string>
 #include "GameEnums.h"
 #include "KeyboardKeysEnum.h"
+#include "PauseMenu.h"
 
 namespace Application
 {
@@ -17,6 +18,7 @@ namespace Application
 				//Some constants used in program
 				KeepInt("distanceBetweenLanes", 20);
 				KeepInt("deadChampionsEraserDelay", 10);
+
 				//Key bindings
 				KeepInt("UpKey",Keys::Up);
 				KeepInt("DownKey",Keys::Down);
@@ -24,6 +26,14 @@ namespace Application
 				KeepInt("RightKey",Keys::Right);
 				KeepInt("AttackKey",Keys::Space);
 				KeepInt("PauseKey",Keys::Escape);
+				
+				//Menu options names
+				KeepString("PauseMenuOption" + Game::PauseMenu::MenuOptionName(Game::MenuOption::Continue),"Continue");
+				KeepString("PauseMenuOption" + Game::PauseMenu::MenuOptionName(Game::MenuOption::Credits), "Credits");
+				KeepString("PauseMenuOption" + Game::PauseMenu::MenuOptionName(Game::MenuOption::Exit), "Exit");
+				KeepString("PauseMenuOption" + Game::PauseMenu::MenuOptionName(Game::MenuOption::NewGame), "New game");
+				KeepString("PauseMenuOption" + Game::PauseMenu::MenuOptionName(Game::MenuOption::Options), "Options");
+
 				//To change
 				SavePreset(Game::ReadyPreset::AIKnight, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
 				SavePreset(Game::ReadyPreset::PlayerKnight, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);

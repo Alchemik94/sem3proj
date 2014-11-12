@@ -82,11 +82,15 @@
     <ClCompile Include="KeyCatcher.cpp" />
     <ClCompile Include="Knight.cpp" />
     <ClInclude Include="Algorithms.h" />
+    <ClInclude Include="IMenuDisplayer.h" />
     <ClInclude Include="KeyboardKeysEnum.h" />
     <ClInclude Include="KeyCatcher.h" />
+    <ClInclude Include="MenuOptionsEnum.h" />
+    <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="PlayerChampionController.h">
       <FileType>CppCode</FileType>
     </ClInclude>
+    <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="PlayerChampionController.cpp" />
     <ClCompile Include="SingleDataKeeper.cpp" />
     <ClCompile Include="Main.cpp" />

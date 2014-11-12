@@ -8,6 +8,8 @@
 #include "KeyCatcher.h"
 #include "Timer.h"
 #include "ITimerParam.h"
+#include "PauseMenu.h"
+#include <thread>
 
 namespace Game
 {
@@ -20,22 +22,24 @@ namespace Game
 			int _currentRound;
 			Application::KeyCatcher* _keyCatcher;
 			volatile bool _paused;
-			//probably the only solution for now
-			//main thread will catch keys
-			//rounds will be run in this function by timer or another thread
-			//(thread maybe?)
-			//static void RoundRunner(Application::ITimerParameter* param);
+			static void RoundsRunner(GameHolder* holder);
 			void Pause();
 			void Unpause();
+			Application::KeyCatcher* GetPlayerController();
+			PauseMenu* _menu;
+			volatile bool _running;
+			std::thread* _runner;
 		public:
 			GameHolder();
 			GameHolder(int numberOfRounds);
-			//probably everything has to be in another thread
 			virtual ~GameHolder();
 			virtual void NewRound(int numberOfEnemies);
 			virtual int RoundsNumber();
+			virtual bool Running();
 			virtual int CurrentRound();
-			
+			virtual void EnteredGame();
+			virtual void PausedGame();
+			virtual void Exit();
 	};
 }
 
