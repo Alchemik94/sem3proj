@@ -4,6 +4,9 @@
 #include "GameHolder.h"
 #include "Application.h"
 #include "Timer.h"
+#include "PlayerChampionController.h"
+#include "ComputerChampionController.h"
+#include "Knight.h"
 
 namespace Game
 {
@@ -12,13 +15,18 @@ namespace Game
 	GameHolder::GameHolder()
 	{
 		_team1 = new Team();
+		_team1->push_back(new Knight(PlayerKnight));
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
+		_team1Controllers = std::vector<ChampionController*>{new PlayerChampionController(*_team1->begin(),&_paused,_team2), };
+		for (auto championPtr = _team2->begin(); championPtr!=_team2->end(); ++championPtr)
+			_team2Controllers.push_back(new ComputerChampionController(*championPtr,&_paused,_team1));
 		_roundsNumber = 1;
 		_currentRound = 0;
 		_keyCatcher = this;
 		_paused = true;
 		_menu = new PauseMenu(this);
 		_running = true;
+		ShowGame();
 		_runner = new std::thread(RoundsRunner, this);
 	}
 
@@ -27,18 +35,27 @@ namespace Game
 	GameHolder::GameHolder(int numberOfRounds)
 	{
 		_team1 = new Team();
+		_team1->push_back(new Knight(PlayerKnight));
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
+		_team1Controllers = std::vector<ChampionController*>{new PlayerChampionController(*_team1->begin(), &_paused, _team2), };
+		for (auto championPtr = _team2->begin(); championPtr != _team2->end(); ++championPtr)
+			_team2Controllers.push_back(new ComputerChampionController(*championPtr, &_paused, _team1));
 		_roundsNumber = numberOfRounds;
 		_currentRound = 0;
 		_keyCatcher = this;
 		_paused = true;
 		_menu = new PauseMenu(this);
 		_running = true;
+		ShowGame();
 		_runner = new std::thread(RoundsRunner, this);
 	}
 
 	GameHolder::~GameHolder()
 	{
+		Exit();
+		HideGame();
+		if (_runner->joinable())
+			_runner->join();
 		if (_team1 != NULL)
 			delete _team1;
 		if (_team2 != NULL)
@@ -66,6 +83,9 @@ namespace Game
 			delete _team2;
 			IGameDisplayer::NewRound();
 			_team2 = new AutogeneratingTeam(numberOfEnemies, AIKnight);
+			_team2Controllers.clear();
+			for (auto championPtr = _team2->begin(); championPtr != _team2->end(); ++championPtr)
+				_team2Controllers.push_back(new ComputerChampionController(*championPtr, &_paused, _team1));
 			UNLOCK_APPLICATION_VARIABLES;
 		}
 		else

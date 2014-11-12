@@ -9,6 +9,7 @@
 #include "Timer.h"
 #include "ITimerParam.h"
 #include "PauseMenu.h"
+#include "ChampionController.h"
 #include <thread>
 
 namespace Game
@@ -29,6 +30,8 @@ namespace Game
 			PauseMenu* _menu;
 			volatile bool _running;
 			std::thread* _runner;
+			std::vector<ChampionController*> _team1Controllers;
+			std::vector<ChampionController*> _team2Controllers;
 		public:
 			GameHolder();
 			GameHolder(int numberOfRounds);
