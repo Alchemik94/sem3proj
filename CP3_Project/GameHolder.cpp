@@ -150,6 +150,13 @@ namespace Game
 		while (holder->_running && holder->_currentRound < holder->_roundsNumber)
 			holder->NewRound(5);
 	}
+
+//TODO
+//More players case
+	Application::KeyCatcher* GameHolder::GetPlayerController()
+	{
+		return dynamic_cast<Application::KeyCatcher*>(*_team1Controllers.begin());
+	}
 }
 
 #endif

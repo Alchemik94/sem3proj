@@ -21,7 +21,7 @@ namespace Game
 		{
 			EnemiesFilter* filter = new AliveEnemiesFilter();
 			std::vector<Champion*> newTeam;
-			newTeam = filter->Filter(NULL, (*team));
+			newTeam = filter->Filter(NULL, team);
 			
 			if (newTeam.size() != team->size())
 			{

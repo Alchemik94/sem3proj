@@ -17,7 +17,7 @@ namespace Game
 		Show();
 	}
 
-	inline PauseMenu::~PauseMenu()
+	PauseMenu::~PauseMenu()
 	{
 		Hide();
 	}

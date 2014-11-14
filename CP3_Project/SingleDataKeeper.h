@@ -47,15 +47,15 @@ namespace Application
 			void InitializeComponent();
 		public:
 			//Gives access to single instance in whole program
-			const static SingleDataKeeper* Instance();
+			static SingleDataKeeper* Instance();
 			//Keeps string value under specified name
 			void KeepString(std::string name, std::string value);
 			//Keeps int value under specified name
 			void KeepInt(std::string name, int value);
 			//Gets string value from specified name
-			const std::string GetString(std::string name) const;
+			const std::string GetString(std::string name);
 			//Gets int value from specified name
-			const int GetInt(std::string name) const;
+			const int GetInt(std::string name);
 			//Checks if specified name of string exists
 			const bool ContainsString(std::string name) const;
 			//Checks if specified name of int exists
@@ -92,7 +92,7 @@ namespace Application
 				int& maximumPower,
 				int& movementSpeed,
 				int& range
-				) const;
+				);
 	};
 }
 

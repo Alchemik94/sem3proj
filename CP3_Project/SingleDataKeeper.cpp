@@ -17,7 +17,7 @@ namespace Application
 		delete _instance;
 	}
 
-	const SingleDataKeeper* SingleDataKeeper::Instance()
+	SingleDataKeeper* SingleDataKeeper::Instance()
 	{
 		if (!_initialized)
 		{
@@ -52,12 +52,12 @@ namespace Application
 		_intDictionary.emplace(name, value);
 	}
 
-	inline const string SingleDataKeeper::GetString(string name) const
+	const string SingleDataKeeper::GetString(string name)
 	{
 		return _stringDictionary[name];
 	}
 	
-	inline const int SingleDataKeeper::GetInt(string name) const
+	const int SingleDataKeeper::GetInt(string name)
 	{
 		return _intDictionary[name];
 	}
@@ -82,7 +82,7 @@ namespace Application
 		KeepInt(name + "Range", range);
 	}
 
-	const void SingleDataKeeper::LoadPreset(Game::ReadyPreset preset, int& attackSpeed, int& basicDamage, int& currentHealth, int& currentPower, int& distanceFromCastle, int& experience, int& lane, int& level, int& maximumHealth, int& maximumPower, int& movementSpeed, int& range) const
+	const void SingleDataKeeper::LoadPreset(Game::ReadyPreset preset, int& attackSpeed, int& basicDamage, int& currentHealth, int& currentPower, int& distanceFromCastle, int& experience, int& lane, int& level, int& maximumHealth, int& maximumPower, int& movementSpeed, int& range)
 	{
 		std::string name;
 		char* tmp = new char[20];
