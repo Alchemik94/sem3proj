@@ -84,6 +84,7 @@ c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\reinterpreter.h(15): warni
               _Ty=Game::Champion *
           ]
           c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\iknightdisplayer.h(21) : see reference to class template instantiation 'Application::VectorReinterpreter<Display::IChampionDisplayer,Game::Champion>' being compiled
+  EventHandler.cpp
   EnemiesFilter.cpp
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(45): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
 c:\users\grzegorz\dropbox\github\sem3proj\cp3_project\enemiesfilter.cpp(51): warning C4067: unexpected tokens following preprocessor directive - expected a newline
