@@ -3,6 +3,7 @@
 
 #include <time.h>
 #include <thread>
+#include "EventHandler.h"
 #include "ITimerParam.h"
 
 namespace Application
@@ -33,6 +34,8 @@ namespace Application
 				return _running;
 			}
 			virtual ~Timer();
+			//experimental one
+			EventHandler Tick;
 	};
 
 	class EmptyTimer : private Timer

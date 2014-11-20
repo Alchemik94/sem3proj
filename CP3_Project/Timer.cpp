@@ -21,6 +21,11 @@ namespace Application
 			//Sleep(timer->_gap);
 			std::this_thread::sleep_for(std::chrono::milliseconds(timer->_gap));
 			timer->_internalFunction(timer->_parameter);
+			Object* sender = new ParametrizedObject<Timer>(*timer);
+			EventArgs* eventArgs = new ParametrizedEventArgs<int>(0);
+			timer->Tick(sender, eventArgs);
+			delete sender;
+			delete eventArgs;
 		}
 	}
 
