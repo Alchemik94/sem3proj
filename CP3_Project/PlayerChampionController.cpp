@@ -5,7 +5,7 @@
 
 namespace Game
 {
-	PlayerChampionController::PlayerChampionController(Champion* controlledChampion, volatile bool* paused, Team* enemyTeam) : ChampionController(controlledChampion, paused), Application::KeyCatcher()
+	PlayerChampionController::PlayerChampionController(Champion* controlledChampion, volatile bool* paused, Team* enemyTeam, Application::KeyCatcher* masterKeyCatcher): ChampionController(controlledChampion, paused), Application::KeyCatcher(masterKeyCatcher)
 	{
 		_enemyTeam = enemyTeam;
 	}

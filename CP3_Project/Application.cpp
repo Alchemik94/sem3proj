@@ -5,10 +5,9 @@
 #include "Application.h"
 
 #ifdef _DEBUG
-	#include "Team.h"
-	#include "Knight.h"
 	#include <iostream>
 	#include <Windows.h>
+	#include "GameHolder.h"
 #endif
 
 namespace Application
@@ -31,7 +30,16 @@ namespace Application
 
 	void MainApplication::Test()
 	{
-		
+		using namespace Game;
+		GameHolder* game = new GameHolder();
+		game->Catched(Keys::Escape);
+		game->Catched(Keys::Up);
+		game->Catched(Keys::Enter);
+		while (game->Running())
+		{
+			
+		}
+		delete game;
 	}
 }
 

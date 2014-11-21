@@ -14,14 +14,13 @@
 
 namespace Game
 {
-	class GameHolder: protected Display::IGameDisplayer, public Application::KeyCatcher, private Application::ITimerParameter
+	class GameHolder: public Display::IGameDisplayer, public Application::KeyCatcher, private Application::ITimerParameter
 	{
 		private:
 			Team* _team1;
 			Team* _team2;
 			int _roundsNumber;
 			int _currentRound;
-			Application::KeyCatcher* _keyCatcher;
 			volatile bool _paused;
 			static void RoundsRunner(GameHolder* holder);
 			void Pause();
@@ -32,6 +31,7 @@ namespace Game
 			std::thread* _runner;
 			std::vector<ChampionController*> _team1Controllers;
 			std::vector<ChampionController*> _team2Controllers;
+			virtual void CatchedKeyHandler(Application::Keys key);
 		public:
 			GameHolder();
 			GameHolder(int numberOfRounds);

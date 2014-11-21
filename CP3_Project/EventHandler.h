@@ -12,11 +12,11 @@ namespace Application
 	template <class T>
 	class ParametrizedObject : public Object
 	{
-		T& _member;
+		const T& _member;
 		public:
-		ParametrizedObject(const T& object)
+			ParametrizedObject(const T& object) : _member(object)
 		{
-			_member = object;
+			
 		}
 		const T& Value()
 		{
@@ -32,11 +32,11 @@ namespace Application
 	template <class T>
 	class ParametrizedEventArgs : public EventArgs
 	{
-		T& _member;
+		const T& _member;
 		public:
-			ParametrizedEventArgs(const T& eventArgs)
+			ParametrizedEventArgs(const T& eventArgs) : _member(eventArgs)
 			{
-				_member = eventArgs;
+				
 			}
 			const T& Value()
 			{

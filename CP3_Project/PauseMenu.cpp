@@ -6,7 +6,7 @@ namespace Game
 {
 //TODO
 //error throwing
-	PauseMenu::PauseMenu(Display::IGameDisplayer* gameholder)
+	PauseMenu::PauseMenu(Display::IGameDisplayer* gameholder, Application::KeyCatcher* masterKeyCatcher) : KeyCatcher(masterKeyCatcher)
 	{
 		_activeOption = GetOptions().begin();
 		if (dynamic_cast<GameHolder*>(gameholder) == NULL)
@@ -20,18 +20,23 @@ namespace Game
 	PauseMenu::~PauseMenu()
 	{
 		Hide();
+		ReturnControl();
 	}
 
 	void PauseMenu::CatchedKeyHandler(Application::Keys key)
 	{
 		if (key == Application::Keys::Up)
 		{
+			if (_activeOption == GetOptions().begin())
+				_activeOption = GetOptions().end();
 			--_activeOption;
 			OptionChanged();
 		}
 		else if (key == Application::Keys::Down)
 		{
 			++_activeOption;
+			if (_activeOption == GetOptions().end())
+				_activeOption = GetOptions().begin();
 			OptionChanged();
 		}
 		else if (key == Application::Keys::Enter)
@@ -41,11 +46,18 @@ namespace Game
 				ReturnControl();
 				dynamic_cast<GameHolder*>(_gameholder)->EnteredGame();
 			}
+			else if (*_activeOption == Exit)
+			{
+				ReturnControl();
+				static_cast<GameHolder*>(_gameholder)->Exit();
+				/*dynamic_cast<GameHolder*>(_gameholder)->Exit();*/
+			}
 		}
 		else if (key == Application::Keys::Escape)
 		{
 			ReturnControl();
-			dynamic_cast<GameHolder*>(_gameholder)->Exit();
+			/*dynamic_cast<GameHolder*>(_gameholder)->Exit();*/
+			static_cast<GameHolder*>(_gameholder)->Exit();
 		}
 		else
 		{
@@ -58,14 +70,14 @@ namespace Game
 		return Application::SingleDataKeeper::Instance()->GetString("PauseMenuOption"+MenuOptionName(*_activeOption));
 	}
 
-	std::vector<MenuOption> PauseMenu::GetOptions()
+	std::vector<MenuOption>& PauseMenu::GetOptions()
 	{
 		static std::vector<MenuOption> result{
 										MenuOption::Continue,
 										MenuOption::NewGame,
 										//MenuOption::Options,
 										//MenuOption::Credits,
-										MenuOption::NewGame,
+										MenuOption::Exit,
 										};
 		return result;
 	}

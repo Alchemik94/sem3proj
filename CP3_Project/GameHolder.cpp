@@ -14,40 +14,40 @@ namespace Game
 //Get rid of hardcode
 	GameHolder::GameHolder()
 	{
+		_paused = true;
+		ShowGame();
 		_team1 = new Team();
 		_team1->push_back(new Knight(PlayerKnight));
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
-		_team1Controllers = std::vector<ChampionController*>{new PlayerChampionController(*_team1->begin(),&_paused,_team2), };
+		_team1Controllers = std::vector<ChampionController*>{new PlayerChampionController(*_team1->begin(),&_paused,_team2,this), };
 		for (auto championPtr = _team2->begin(); championPtr!=_team2->end(); ++championPtr)
 			_team2Controllers.push_back(new ComputerChampionController(*championPtr,&_paused,_team1));
 		_roundsNumber = 1;
 		_currentRound = 0;
-		_keyCatcher = this;
-		_paused = true;
-		_menu = new PauseMenu(this);
+		_menu = new PauseMenu(this,this);
 		_running = true;
-		ShowGame();
 		_runner = new std::thread(RoundsRunner, this);
+		PausedGame();
 	}
 
 //TODO
 //Get rid of hardcode
 	GameHolder::GameHolder(int numberOfRounds)
 	{
+		_paused = true;
+		ShowGame();
 		_team1 = new Team();
 		_team1->push_back(new Knight(PlayerKnight));
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
-		_team1Controllers = std::vector<ChampionController*>{new PlayerChampionController(*_team1->begin(), &_paused, _team2), };
+		_team1Controllers = std::vector<ChampionController*>{new PlayerChampionController(*_team1->begin(), &_paused, _team2,this), };
 		for (auto championPtr = _team2->begin(); championPtr != _team2->end(); ++championPtr)
 			_team2Controllers.push_back(new ComputerChampionController(*championPtr, &_paused, _team1));
 		_roundsNumber = numberOfRounds;
 		_currentRound = 0;
-		_keyCatcher = this;
-		_paused = true;
-		_menu = new PauseMenu(this);
+		_menu = new PauseMenu(this,this);
 		_running = true;
-		ShowGame();
 		_runner = new std::thread(RoundsRunner, this);
+		PausedGame();
 	}
 
 	GameHolder::~GameHolder()
@@ -62,9 +62,14 @@ namespace Game
 			delete _team2;
 	}
 
+//TODO
+	void GameHolder::CatchedKeyHandler(Application::Keys key)
+	{
+		//throw an error - it shouldn't be here
+	}
+
 	//TODO
 	//Needs changes for various types of enemies
-	//Makes game to proceed to the next round
 	void GameHolder::NewRound(int numberOfEnemies)
 	{
 		LOCK_APPLICATION_VARIABLES(Application::EmptyTimer::Instance());
@@ -121,13 +126,27 @@ namespace Game
 	void GameHolder::Exit()
 	{
 		Pause();
-		_menu->Hide();
+		if (_menu!=NULL)
+			_menu->Hide();
 		_running = false;
 		_currentRound = _roundsNumber;
-		_runner->join();
-		delete _team1;
-		delete _team2;
-		delete _menu;
+		if (_runner->joinable())
+			_runner->join();
+		if (_team1 != NULL)
+		{
+			delete _team1;
+			_team1 = NULL;
+		}
+		if (_team2 != NULL)
+		{
+			delete _team2;
+			_team2 = NULL;
+		}
+		if (_menu != NULL)
+		{
+			delete _menu;
+			_menu = NULL;
+		}
 	}
 
 	inline void GameHolder::Pause()
@@ -149,6 +168,9 @@ namespace Game
 	{
 		while (holder->_running && holder->_currentRound < holder->_roundsNumber)
 			holder->NewRound(5);
+		LOCK_APPLICATION_VARIABLES(Application::EmptyTimer::Instance());
+		holder->_running = false;
+		UNLOCK_APPLICATION_VARIABLES;
 	}
 
 //TODO

@@ -15,9 +15,9 @@ namespace Game
 			std::vector<MenuOption>::iterator _activeOption;
 			Display::IGameDisplayer* _gameholder;
 		public:
-			PauseMenu(Display::IGameDisplayer* gameholder);
+			PauseMenu(Display::IGameDisplayer* gameholder, Application::KeyCatcher* masterKeyCatcher);
 			virtual std::string GetActiveOption();
-			virtual std::vector<MenuOption> GetOptions();
+			virtual std::vector<MenuOption>& GetOptions();
 			static std::string MenuOptionName(MenuOption option);
 			~PauseMenu();
 	};

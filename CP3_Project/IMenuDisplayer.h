@@ -28,6 +28,6 @@ namespace Display
 			}
 
 			virtual std::string GetActiveOption() = 0;
-			virtual std::vector<Game::MenuOption> GetOptions() = 0;
+			virtual std::vector<Game::MenuOption>& GetOptions() = 0;
 	};
 }
