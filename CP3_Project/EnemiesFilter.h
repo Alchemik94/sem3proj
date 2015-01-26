@@ -1,5 +1,4 @@
-#ifndef _ENEMIES_FILTER_DECLARATION
-#define _ENEMIES_FILTER_DECLARATION
+#pragma once
 
 #include "Champion.h"
 #include "IFilter.h"
@@ -45,5 +44,3 @@ namespace Game
 			virtual std::vector<Champion*> Filter(Champion* attackingChampion, std::vector<Champion*>* enemies);
 	};
 }
-
-#endif

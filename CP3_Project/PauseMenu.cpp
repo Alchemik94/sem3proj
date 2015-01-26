@@ -103,4 +103,9 @@ namespace Game
 			break;
 		}
 	}
+
+	std::string PauseMenu::GetMenuOptionName(MenuOption option)
+	{
+		return MenuOptionName(option);
+	}
 }

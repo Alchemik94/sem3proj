@@ -15,14 +15,19 @@ namespace Display
 
 			}
 			
-			virtual void ShowGame()
+			virtual void Show()
 			{
 			
 			}
 			
-			virtual void HideGame()
+			virtual void Hide()
 			{
 			
+			}
+
+			virtual void Refresh()
+			{
+
 			}
 
 			virtual int RoundsNumber() = 0;

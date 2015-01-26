@@ -18,6 +18,7 @@ namespace Game
 			PauseMenu(Display::IGameDisplayer* gameholder, Application::KeyCatcher* masterKeyCatcher);
 			virtual std::string GetActiveOption();
 			virtual std::vector<MenuOption>& GetOptions();
+			virtual std::string GetMenuOptionName(MenuOption option);
 			static std::string MenuOptionName(MenuOption option);
 			~PauseMenu();
 	};

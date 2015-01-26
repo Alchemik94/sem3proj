@@ -173,5 +173,11 @@
     <ClInclude Include="EventHandler.h">
       <Filter>Header Files\Application</Filter>
     </ClInclude>
+    <ClInclude Include="IDisplayer.h">
+      <Filter>Header Files\Display</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -15,7 +15,7 @@ namespace Game
 	GameHolder::GameHolder()
 	{
 		_paused = true;
-		ShowGame();
+		Show();
 		_team1 = new Team();
 		_team1->push_back(new Knight(PlayerKnight));
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
@@ -35,7 +35,7 @@ namespace Game
 	GameHolder::GameHolder(int numberOfRounds)
 	{
 		_paused = true;
-		ShowGame();
+		Show();
 		_team1 = new Team();
 		_team1->push_back(new Knight(PlayerKnight));
 		_team2 = new AutogeneratingTeam(5, ReadyPreset::AIKnight);
@@ -53,7 +53,7 @@ namespace Game
 	GameHolder::~GameHolder()
 	{
 		Exit();
-		HideGame();
+		Hide();
 		if (_runner->joinable())
 			_runner->join();
 		if (_team1 != NULL)
@@ -62,10 +62,10 @@ namespace Game
 			delete _team2;
 	}
 
-//TODO
 	void GameHolder::CatchedKeyHandler(Application::Keys key)
 	{
-		//throw an error - it shouldn't be here
+		if (_running)
+			throw "GameHolder cannot catch a key!\n";
 	}
 
 	//TODO

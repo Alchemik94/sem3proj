@@ -25,6 +25,8 @@ namespace Display
 			virtual void DisplayDeath()
 			{
 				//TODO
+				//when it ends, it would be great to autohide champion dying:
+				Hide();
 			}
 			virtual void DisplayMove(Game::Direction direction, int change)
 			{

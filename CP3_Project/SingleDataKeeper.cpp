@@ -67,7 +67,7 @@ namespace Application
 		char* tmp = new char[20];
 		sprintf(tmp, "ReadyPreset%d", preset);
 		std::string name = tmp;
-		delete tmp;
+		delete [] tmp;
 		KeepInt(name + "AttackSpeed", attackSpeed);
 		KeepInt(name + "BasicDamage", basicDamage);
 		KeepInt(name + "CurrentHealth", currentHealth);
@@ -88,7 +88,7 @@ namespace Application
 		char* tmp = new char[20];
 		sprintf(tmp, "ReadyPreset%d", preset);
 		name = tmp;
-		delete tmp;
+		delete [] tmp;
 		attackSpeed = GetInt(name + "AttackSpeed");
 		basicDamage = GetInt(name + "BasicDamage");
 		currentHealth = GetInt(name + "CurrentHealth");

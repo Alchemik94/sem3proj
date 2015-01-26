@@ -35,7 +35,7 @@ namespace Application
 		return *this;
 	}
 
-	const EventHandler& EventHandler::operator+=(const Function& function)
+	const EventHandler& EventHandler::operator+=(const Function function)
 	{
 		if (_functions.size() + _anotherHandlers.size() == 0)
 			_functions.push_back(std::make_pair<int, const Function&>((int)(_anotherHandlers.size() + _functions.size()), function));
@@ -71,7 +71,7 @@ namespace Application
 		return (*this != handler) == false;
 	}
 
-	const EventHandler& EventHandler::operator-=(const Function& function)
+	const EventHandler& EventHandler::operator-=(const Function function)
 	{
 		auto functionIt = _functions.begin();
 		for (; functionIt != _functions.end() && functionIt->second != function; ++functionIt);

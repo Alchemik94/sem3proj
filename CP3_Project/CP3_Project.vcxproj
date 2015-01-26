@@ -84,6 +84,7 @@
     <ClCompile Include="Knight.cpp" />
     <ClInclude Include="Algorithms.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="IDisplayer.h" />
     <ClInclude Include="IMenuDisplayer.h" />
     <ClInclude Include="KeyboardKeysEnum.h" />
     <ClInclude Include="KeyCatcher.h" />
@@ -119,6 +120,9 @@
     <ClInclude Include="SingleDataKeeper.h" />
     <ClInclude Include="Team.h" />
     <ClInclude Include="Timer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

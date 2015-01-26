@@ -49,6 +49,20 @@ namespace Display
 
 			//Returns selected champion parameter
 			virtual int GetParameter(Game::ChampionParameters param) = 0;
+
+			virtual void Show()
+			{
+				//I don't know - maybe like this:
+				DisplayOnMap();
+			}
+			virtual void Hide()
+			{
+				//Has to be implemented
+			}
+			virtual void Refresh()
+			{
+				//Has to be implemented
+			}
 	};
 }
 

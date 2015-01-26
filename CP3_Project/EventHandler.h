@@ -47,7 +47,7 @@ namespace Application
 	class EventHandler
 	{
 		typedef void(*Function)(Object*, EventArgs*);
-		std::list<std::pair<int,const Function&> > _functions;
+		std::list<std::pair<int,const Function> > _functions;
 		std::list<std::pair<int,const EventHandler&> > _anotherHandlers;
 		public:
 			//Called when such an event occurs
@@ -57,7 +57,7 @@ namespace Application
 			const EventHandler& operator+=(const EventHandler& handler);
 
 			//Adds another function to handle the event
-			const EventHandler& operator+=(const Function& function);
+			const EventHandler& operator+=(const Function function);
 
 			//Checks if the handlers are different
 			bool operator!=(const EventHandler& handler) const;
@@ -69,6 +69,6 @@ namespace Application
 			bool operator==(const EventHandler& handler) const;
 
 			//Unregisters function from handler
-			const EventHandler& operator-=(const Function& function);
+			const EventHandler& operator-=(const Function function);
 	};
 }
